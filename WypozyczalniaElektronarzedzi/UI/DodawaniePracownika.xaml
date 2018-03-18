@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="WypozyczalniaElektronarzedzi.UI.DodawaniePracownika"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WypozyczalniaElektronarzedzi.UI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Background="#fff">
+        <Label Content="Dodawanie pracownika" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Imię" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="142"/>
+        <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="142"/>
+        <Label Content="PESEL" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.339,0.714" Width="142"/>
+        <Label Content="Hasło" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="142"/>
+        <TextBox Name="ImieTextBox" HorizontalAlignment="Left" Height="23" Margin="152,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="NazwiskoTextBox" HorizontalAlignment="Left" Height="23" Margin="152,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="PESELTextBox"  HorizontalAlignment="Left" Height="23" Margin="152,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextOptions.TextHintingMode="Animated"/>
+        <TextBox Name="HasloTextBox" HorizontalAlignment="Left" Height="23" Margin="152,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Name="CreatePracownikBtn" Content="Dodaj Pracownika" HorizontalAlignment="Left" Margin="152,163,0,0" VerticalAlignment="Top" Width="120" Click="CreatePracownikBtn_Click"/>
+    </Grid>
+</UserControl>

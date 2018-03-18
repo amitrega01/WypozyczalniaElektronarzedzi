@@ -1,0 +1,46 @@
+﻿<Window x:Class="WypozyczalniaElektronarzedzi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WypozyczalniaElektronarzedzi"
+        
+        xmlns:controls="clr-namespace:WypozyczalniaElektronarzedzi.UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="605.173" Width="1128.289">
+    <Grid>
+        <Label VerticalAlignment="Center" HorizontalAlignment="Center" Content="Zaloguj sie aby kontynuowac"/>
+        <TabControl Name="Tabs" Margin="0,0,0,0" >
+            <TabItem Header="Produkty">
+                <Grid Background="#FFF"/>
+            </TabItem>
+            <TabItem Header="Klienci">
+                <Grid Background="#FFF"/>
+            </TabItem>
+            <TabItem Header="Wypożyczenia">
+                <Grid Background="#FFF"/>
+            </TabItem>
+            <TabItem Header="Rezerwacje">
+
+            </TabItem>
+            <TabItem Header="Inne">
+                <Grid Background="#FFE5E5E5">
+                    <TabControl
+                        TabStripPlacement="Left"
+                        Margin="0,0,0,0">
+                        <TabItem Header="Dodawanie pracownika">
+                            <controls:DodawaniePracownika ></controls:DodawaniePracownika>
+                        </TabItem>
+                        <TabItem Header="Raporty">
+                            <Grid Background="#FFF"/>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+        <Label Name="ObecnyUzytkownikLabel" Content="Niezalogowano" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0,0,81.6,0" HorizontalAlignment="Right" Width="200" />
+        <Button Name="LogInBtn" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Content="Zaloguj" Margin="0,2,2,0" Click="LogInBtn_Click"/>
+    </Grid>
+</Window>
