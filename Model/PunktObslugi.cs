@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WypozyczalniaElektronarzedzi
+namespace Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Pracownicy
+    public partial class PunktObslugi
     {
-        public decimal PESEL { get; set; }
-        public string Imie { get; set; }
-        public string Nazwisko { get; set; }
-        public string Haslo { get; set; }
+        public int IDPunktu { get; set; }
+        public string Ulica { get; set; }
+        public string NrDomu { get; set; }
+        public string Miasto { get; set; }
     }
 }

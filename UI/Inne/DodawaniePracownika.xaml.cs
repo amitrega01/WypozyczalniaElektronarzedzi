@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Model;
 
 namespace WypozyczalniaElektronarzedzi.UI
 {
@@ -23,6 +24,11 @@ namespace WypozyczalniaElektronarzedzi.UI
         public DodawaniePracownika()
         {
             InitializeComponent();
+            using (var context = new WypozyczalniaEntities())
+            {
+                var punktyObslugi = context.PunktObslugi.Select(x =>(int) x.IDPunktu);
+                PunktObslugi.ItemsSource = punktyObslugi.ToList<int>();
+            }
         }
 
         private void CreatePracownikBtn_Click(object sender, RoutedEventArgs e)
@@ -32,12 +38,13 @@ namespace WypozyczalniaElektronarzedzi.UI
                 Imie = ImieTextBox.Text,
                 Nazwisko = NazwiskoTextBox.Text,
                 PESEL = Convert.ToDecimal(PESELTextBox.Text),
-                Haslo = HasloTextBox.Text
+                Haslo = HasloTextBox.Text,
+                PunktObslugi = (int) PunktObslugi.SelectedItem 
             };
             using (var context = new WypozyczalniaEntities())
             {
                 context.Pracownicy.Add(pracownik);
-                context.SaveChangesAsync();
+                context.SaveChanges();
             }
             ImieTextBox.Text = String.Empty;
             NazwiskoTextBox.Text = String.Empty;

@@ -12,10 +12,15 @@
         <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="142"/>
         <Label Content="PESEL" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.339,0.714" Width="142"/>
         <Label Content="Hasło" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="142"/>
+        <Label Content="Punkt obsługi" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="142"/>
         <TextBox Name="ImieTextBox" HorizontalAlignment="Left" Height="23" Margin="152,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="NazwiskoTextBox" HorizontalAlignment="Left" Height="23" Margin="152,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="PESELTextBox"  HorizontalAlignment="Left" Height="23" Margin="152,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextOptions.TextHintingMode="Animated"/>
         <TextBox Name="HasloTextBox" HorizontalAlignment="Left" Height="23" Margin="152,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Name="CreatePracownikBtn" Content="Dodaj Pracownika" HorizontalAlignment="Left" Margin="152,163,0,0" VerticalAlignment="Top" Width="120" Click="CreatePracownikBtn_Click"/>
+
+        <ComboBox Name="PunktObslugi" HorizontalAlignment="Left" Margin="152,150,0,0" VerticalAlignment="Top" Width="120"/>
+        
+        <Button Name="CreatePracownikBtn" Content="Dodaj Pracownika" HorizontalAlignment="Left" Margin="152,190,0,0" VerticalAlignment="Top" Width="120" Click="CreatePracownikBtn_Click"/>
+        
     </Grid>
 </UserControl>

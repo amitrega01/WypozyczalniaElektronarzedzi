@@ -4,8 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WypozyczalniaElektronarzedzi"
-        
-        xmlns:controls="clr-namespace:WypozyczalniaElektronarzedzi.UI"
+        xmlns:controls="clr-namespace:WypozyczalniaElektronarzedzi.UI;assembly=UI"
         mc:Ignorable="d"
         Title="MainWindow" Height="605.173" Width="1128.289">
     <Grid>

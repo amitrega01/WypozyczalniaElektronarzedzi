@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Model;
 
 namespace WypozyczalniaElektronarzedzi
 {
@@ -37,21 +38,22 @@ namespace WypozyczalniaElektronarzedzi
                 {
                     try
                     {
-                        var res = context.Pracownicy
-                        .Single<Pracownicy>(x => (x.PESEL.ToString() == PeselText.Text && x.Haslo == PasswordText.Password));
+                        var res = context.Pracownicy.Single<Pracownicy>(x => x.PESEL.ToString() == PeselText.Text && x.Haslo == PasswordText.Password);
                         MainWindow mainWindow = new MainWindow();
                         mainWindow.pracownik = res;
                         mainWindow.Show();
                         mainWindow.UpdateUI();
                         this.Close();
-                    }
-                    catch (Exception exception)
-                    {
-                        Console.WriteLine(exception.ToString());
-                    }
-                    
 
-                    
+                    }
+                    catch (Exception s)
+                    {
+                        Console.WriteLine(s);
+                    }
+
+
+
+
                 }
 
             }

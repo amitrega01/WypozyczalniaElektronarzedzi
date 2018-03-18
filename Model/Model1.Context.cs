@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WypozyczalniaElektronarzedzi
+namespace Model
 {
     using System;
     using System.Data.Entity;
@@ -26,5 +26,7 @@ namespace WypozyczalniaElektronarzedzi
         }
     
         public virtual DbSet<Pracownicy> Pracownicy { get; set; }
+        public virtual DbSet<PunktObslugi> PunktObslugi { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }
