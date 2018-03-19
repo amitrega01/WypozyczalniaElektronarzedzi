@@ -19,5 +19,6 @@ namespace Model
         public string Nazwisko { get; set; }
         public string Haslo { get; set; }
         public int PunktObslugi { get; set; }
+        
     }
 }

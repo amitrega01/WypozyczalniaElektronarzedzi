@@ -18,5 +18,11 @@ namespace Model
         public string Ulica { get; set; }
         public string NrDomu { get; set; }
         public string Miasto { get; set; }
+        public override string ToString()
+        {
+            return $"{IDPunktu}: {Miasto}";
+        }
+
+       
     }
 }

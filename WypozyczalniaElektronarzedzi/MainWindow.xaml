@@ -8,30 +8,32 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="605.173" Width="1128.289">
     <Grid>
-        <Label VerticalAlignment="Center" HorizontalAlignment="Center" Content="Zaloguj sie aby kontynuowac"/>
-        <TabControl Name="Tabs" Margin="0,0,0,0" >
+        <Label VerticalAlignment="Center" HorizontalAlignment="Center" Content="Zaloguj sie aby kontynuowac" />
+        <TabControl Name="Tabs" Margin="0,0,0,0">
             <TabItem Header="Produkty">
-                <Grid Background="#FFF"/>
+                <Grid Background="#FFF" />
             </TabItem>
             <TabItem Header="Klienci">
-                <Grid Background="#FFF"/>
+                <Grid Background="#FFF" />
             </TabItem>
             <TabItem Header="Wypożyczenia">
-                <Grid Background="#FFF"/>
+                <Grid Background="#FFF" />
             </TabItem>
-            <TabItem Header="Rezerwacje">
-
-            </TabItem>
+            <TabItem Header="Rezerwacje" />
             <TabItem Header="Inne">
                 <Grid Background="#FFE5E5E5">
                     <TabControl
                         TabStripPlacement="Left"
                         Margin="0,0,0,0">
-                        <TabItem Header="Dodawanie pracownika">
-                            <controls:DodawaniePracownika ></controls:DodawaniePracownika>
+                        <TabItem Header="Pracownicy">
+                            <Grid>
+                                <controls:DodawaniePracownika Width="300" HorizontalAlignment="Left"/>
+                                <controls:WyswietlaniePracownikow Width="733" HorizontalAlignment="Right" Margin="0,0,-0.4,0"/>
+
+                            </Grid>
                         </TabItem>
                         <TabItem Header="Raporty">
-                            <Grid Background="#FFF"/>
+                            <Grid Background="#FFF" />
                         </TabItem>
                     </TabControl>
                 </Grid>
@@ -39,7 +41,9 @@
 
         </TabControl>
 
-        <Label Name="ObecnyUzytkownikLabel" Content="Niezalogowano" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0,0,81.6,0" HorizontalAlignment="Right" Width="200" />
-        <Button Name="LogInBtn" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Content="Zaloguj" Margin="0,2,2,0" Click="LogInBtn_Click"/>
+        <Label Name="ObecnyUzytkownikLabel" Content="Niezalogowano" VerticalAlignment="Top"
+               HorizontalContentAlignment="Right" Margin="0,0,81.6,0" HorizontalAlignment="Right" Width="200" />
+        <Button Name="LogInBtn" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Content="Zaloguj"
+                Margin="0,2,2,0" Click="LogInBtn_Click" />
     </Grid>
 </Window>
