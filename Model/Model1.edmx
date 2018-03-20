@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WypozyczalniaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WypozyczalniaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Kategorie">
           <Key>
             <PropertyRef Name="IDKategorii" />
@@ -32,6 +32,15 @@
           <Property Name="Model" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="CenaZaDobe" Type="money" Nullable="false" />
           <Property Name="Kaucja" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProduktySz">
+          <Key>
+            <PropertyRef Name="IDProduktuSz" />
+          </Key>
+          <Property Name="IDProduktuSz" Type="int" Nullable="false" />
+          <Property Name="IDProduktu" Type="int" Nullable="false" />
+          <Property Name="StanTechniczny" Type="int" />
+          <Property Name="IDPunktu" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PunktObslugi">
           <Key>
@@ -66,10 +75,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Produkt">
+          <End Role="Produkty" Type="Self.Produkty" Multiplicity="1" />
+          <End Role="ProduktySz" Type="Self.ProduktySz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produkty">
+              <PropertyRef Name="IDProduktu" />
+            </Principal>
+            <Dependent Role="ProduktySz">
+              <PropertyRef Name="IDProduktu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduktySz_PunktObslugi1">
+          <End Role="PunktObslugi" Type="Self.PunktObslugi" Multiplicity="1" />
+          <End Role="ProduktySz" Type="Self.ProduktySz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PunktObslugi">
+              <PropertyRef Name="IDPunktu" />
+            </Principal>
+            <Dependent Role="ProduktySz">
+              <PropertyRef Name="IDPunktu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="WypozyczalniaModelStoreContainer">
           <EntitySet Name="Kategorie" EntityType="Self.Kategorie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produkty" EntityType="Self.Produkty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProduktySz" EntityType="Self.ProduktySz" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PunktObslugi" EntityType="Self.PunktObslugi" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Kategoria" Association="Self.FK_Kategoria">
             <End Role="Kategorie" EntitySet="Kategorie" />
@@ -79,9 +113,16 @@
             <End Role="PunktObslugi" EntitySet="PunktObslugi" />
             <End Role="Pracownicy" EntitySet="Pracownicy" />
           </AssociationSet>
+          <AssociationSet Name="FK_Produkt" Association="Self.FK_Produkt">
+            <End Role="Produkty" EntitySet="Produkty" />
+            <End Role="ProduktySz" EntitySet="ProduktySz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduktySz_PunktObslugi1" Association="Self.FK_ProduktySz_PunktObslugi1">
+            <End Role="PunktObslugi" EntitySet="PunktObslugi" />
+            <End Role="ProduktySz" EntitySet="ProduktySz" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WypozyczalniaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -115,6 +156,7 @@
           <Property Name="CenaZaDobe" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Kaucja" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="Kategorie" Relationship="Self.FK_Kategoria" FromRole="Produkty" ToRole="Kategorie" />
+          <NavigationProperty Name="ProduktySz" Relationship="WypozyczalniaModel.FK_Produkt" FromRole="Produkty" ToRole="ProduktySz" />
         </EntityType>
         <EntityType Name="PunktObslugi">
           <Key>
@@ -125,6 +167,7 @@
           <Property Name="NrDomu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Miasto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Pracownicy" Relationship="Self.FK_PracownicyPunktObslugi" FromRole="PunktObslugi" ToRole="Pracownicy" />
+          <NavigationProperty Name="ProduktySz" Relationship="WypozyczalniaModel.FK_ProduktySz_PunktObslugi1" FromRole="PunktObslugi" ToRole="ProduktySz" />
         </EntityType>
         <Association Name="FK_Kategoria">
           <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
@@ -163,7 +206,51 @@
             <End Role="PunktObslugi" EntitySet="PunktObslugi" />
             <End Role="Pracownicy" EntitySet="Pracownicy" />
           </AssociationSet>
+          <EntitySet Name="ProduktySz" EntityType="WypozyczalniaModel.ProduktySz" />
+          <AssociationSet Name="FK_Produkt" Association="WypozyczalniaModel.FK_Produkt">
+            <End Role="Produkty" EntitySet="Produkty" />
+            <End Role="ProduktySz" EntitySet="ProduktySz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduktySz_PunktObslugi1" Association="WypozyczalniaModel.FK_ProduktySz_PunktObslugi1">
+            <End Role="PunktObslugi" EntitySet="PunktObslugi" />
+            <End Role="ProduktySz" EntitySet="ProduktySz" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ProduktySz">
+          <Key>
+            <PropertyRef Name="IDProduktuSz" />
+          </Key>
+          <Property Name="IDProduktuSz" Type="Int32" Nullable="false" />
+          <Property Name="IDProduktu" Type="Int32" Nullable="false" />
+          <Property Name="StanTechniczny" Type="Int32" />
+          <Property Name="IDPunktu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Produkty" Relationship="WypozyczalniaModel.FK_Produkt" FromRole="ProduktySz" ToRole="Produkty" />
+          <NavigationProperty Name="PunktObslugi" Relationship="WypozyczalniaModel.FK_ProduktySz_PunktObslugi1" FromRole="ProduktySz" ToRole="PunktObslugi" />
+        </EntityType>
+        <Association Name="FK_Produkt">
+          <End Type="WypozyczalniaModel.Produkty" Role="Produkty" Multiplicity="1" />
+          <End Type="WypozyczalniaModel.ProduktySz" Role="ProduktySz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produkty">
+              <PropertyRef Name="IDProduktu" />
+            </Principal>
+            <Dependent Role="ProduktySz">
+              <PropertyRef Name="IDProduktu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduktySz_PunktObslugi1">
+          <End Type="WypozyczalniaModel.PunktObslugi" Role="PunktObslugi" Multiplicity="1" />
+          <End Type="WypozyczalniaModel.ProduktySz" Role="ProduktySz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PunktObslugi">
+              <PropertyRef Name="IDPunktu" />
+            </Principal>
+            <Dependent Role="ProduktySz">
+              <PropertyRef Name="IDPunktu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -208,6 +295,16 @@
                 <ScalarProperty Name="Ulica" ColumnName="Ulica" />
                 <ScalarProperty Name="NrDomu" ColumnName="NrDomu" />
                 <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProduktySz">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.ProduktySz">
+              <MappingFragment StoreEntitySet="ProduktySz">
+                <ScalarProperty Name="IDPunktu" ColumnName="IDPunktu" />
+                <ScalarProperty Name="StanTechniczny" ColumnName="StanTechniczny" />
+                <ScalarProperty Name="IDProduktu" ColumnName="IDProduktu" />
+                <ScalarProperty Name="IDProduktuSz" ColumnName="IDProduktuSz" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

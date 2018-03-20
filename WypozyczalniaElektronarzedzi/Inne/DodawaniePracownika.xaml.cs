@@ -17,8 +17,9 @@ namespace WypozyczalniaElektronarzedzi
             InitializeComponent();
             using (var context = new WypozyczalniaEntities())
             {
-                var punktyObslugi = context.PunktObslugi.Select(x => x).ToList().Select(x => x.ToString());
+                var punktyObslugi = context.PunktObslugi.ToList();
                 PunktObslugi.ItemsSource = punktyObslugi;
+                PunktObslugi.DisplayMemberPath = "Miasto";
             }
         }
 
@@ -31,7 +32,7 @@ namespace WypozyczalniaElektronarzedzi
                 Nazwisko = NazwiskoTextBox.Text,
                 PESEL = Convert.ToDecimal(PESELTextBox.Text),
                 Haslo = HasloTextBox.Text,
-                PunktObslugi = PunktObslugi.SelectedIndex + 1
+                PunktObslugi = (PunktObslugi.SelectedItem as PunktObslugi).IDPunktu
             };
 
             using (var context = new WypozyczalniaEntities())

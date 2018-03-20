@@ -11,6 +11,9 @@
         <EntityTypeShape EntityType="WypozyczalniaModel.PunktObslugi" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="WypozyczalniaModel.FK_Kategoria" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczalniaModel.FK_PracownicyPunktObslugi" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.ProduktySz" Width="1.5" PointX="5.25" PointY="3.125" />
+        <AssociationConnector Association="WypozyczalniaModel.FK_Produkt" />
+        <AssociationConnector Association="WypozyczalniaModel.FK_ProduktySz_PunktObslugi1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -17,26 +17,40 @@
 
                 <TabItem Header="Nowy produkt" >
                     <Grid Background="#FFF">
-                        <Label Content="Kategoria" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120"/>
+                        <Label Content="Kategoria"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="83"/>
                         <Label Content="Marka" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="120"/>
                         <Label Content="Model" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="120"/>
                         <Label Content="Cena za dobę" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="120"/>
                         <Label Content="Kaucja" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Width="120"/>
                         <Label Content="Stan techniczny" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Width="120"/>
                         <Label Content="W punkcie obslugi" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top" Width="120"/>
-                        <ComboBox  x:Name="KategoriaCB" HorizontalAlignment="Left" Margin="130,7,0,0" VerticalAlignment="Top" Width="150"/>
+                        <ComboBox  x:Name="KategoriaCB" materialDesign:HintAssist.Hint="Kategoria" HorizontalAlignment="Left" Margin="130,7,0,0" VerticalAlignment="Top" Width="150"/>
                         <TextBox x:Name="MarkaTB" HorizontalAlignment="Left" Height="23" Margin="130,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
-                        <TextBox x:Name="MarkaTB_Copy" HorizontalAlignment="Left" Height="23" Margin="130,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
-                        <TextBox x:Name="MarkaTB_Copy1" HorizontalAlignment="Left" Height="23" Margin="130,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
-                        <TextBox x:Name="MarkaTB_Copy2" HorizontalAlignment="Left" Height="23" Margin="130,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
-                        <ComboBox HorizontalAlignment="Left" Margin="130,163,0,0" VerticalAlignment="Top" Width="150"/>
-                        <ComboBox HorizontalAlignment="Left" Margin="130,194,0,0" VerticalAlignment="Top" Width="150"/>
-                        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="130,242,0,0" VerticalAlignment="Top" Width="150" Click="Button_Click"/>
+                        <TextBox x:Name="ModelTB" HorizontalAlignment="Left" Height="23" Margin="130,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
+                        <TextBox x:Name="CenaZaDobeTB" HorizontalAlignment="Left" Height="23" Margin="130,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
+                        <TextBox x:Name="Kaucja" HorizontalAlignment="Left" Height="23" Margin="130,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
+                        <ComboBox x:Name="StanTechCB" materialDesign:HintAssist.Hint="Stan techniczny" HorizontalAlignment="Left" Margin="130,163,0,0" VerticalAlignment="Top" Width="150"/>
+                        <ComboBox x:Name="PunktObslugiCB" materialDesign:HintAssist.Hint="Punkt obsługi" HorizontalAlignment="Left" Margin="130,194,0,0" VerticalAlignment="Top" Width="150"/>
+                        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="130,242,0,0" VerticalAlignment="Top" Width="150" Click="DodajProduktBtn_Click"/>
+                        <Button Content="+" Padding="0,0,0,2"  HorizontalAlignment="Left" Margin="86,10,0,0" VerticalAlignment="Top" Width="32" Height="26" FontSize="14" Click="Button_Click"/>
 
                     </Grid>
                 </TabItem>
                 <TabItem Header="Nowy egzemplarz">
-                    <Grid Background="#FFF" />
+                    <Grid Background="#FFF" >
+                        <Label Content="Marka" HorizontalAlignment="Left" Margin="10,10,0,0" Width="120" VerticalAlignment="Top"/>
+                        <Label Content="Model" HorizontalAlignment="Left" Margin="10,41,0,0" Width="120" VerticalAlignment="Top"/>
+                        <Label Content="Stan tehcniczny" HorizontalAlignment="Left" Margin="10,72,0,0" Width="120" VerticalAlignment="Top"/>
+                        <Label Content="Punkt obsługi" HorizontalAlignment="Left" Margin="10,103,0,0" Width="120" VerticalAlignment="Top"/>
+                        <ComboBox materialDesign:HintAssist.Hint="Marka" x:Name="MarkaCB" HorizontalAlignment="Left" Margin="130,8,0,0" VerticalAlignment="Top" Width="151"/>
+                        <ComboBox materialDesign:HintAssist.Hint="Model" x:Name="ModelCB" HorizontalAlignment="Left" Margin="130,39,0,0" VerticalAlignment="Top" Width="151"/>
+                        <ComboBox materialDesign:HintAssist.Hint="Stan techniczny" x:Name="StanTechCB2" HorizontalAlignment="Left" Margin="130,69,0,0" VerticalAlignment="Top" Width="151"/>
+                        <ComboBox materialDesign:HintAssist.Hint="Punkt obsługi" x:Name="PunktObslugiCB2" HorizontalAlignment="Left" Margin="130,101,0,0" VerticalAlignment="Top" Width="150"/>
+                        
+              
+                        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="130,134,0,0" VerticalAlignment="Top" Width="150" Click="DodajEgzBtn_Click"/>
+                       
+                    </Grid>
 
                 </TabItem>
             </TabControl>

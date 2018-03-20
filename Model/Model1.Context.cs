@@ -29,5 +29,6 @@ namespace Model
         public virtual DbSet<Pracownicy> Pracownicy { get; set; }
         public virtual DbSet<Produkty> Produkty { get; set; }
         public virtual DbSet<PunktObslugi> PunktObslugi { get; set; }
+        public virtual DbSet<ProduktySz> ProduktySz { get; set; }
     }
 }

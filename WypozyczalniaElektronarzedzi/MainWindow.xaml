@@ -30,7 +30,9 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Klienci">
-                <Grid Background="#FFF" />
+                <Grid Background="#FFF" >
+                    
+                </Grid>
             </TabItem>
             <TabItem Header="Wypożyczenia">
                 <Grid Background="#FFF" />

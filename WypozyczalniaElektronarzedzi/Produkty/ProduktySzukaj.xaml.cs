@@ -24,20 +24,88 @@ namespace WypozyczalniaElektronarzedzi
         public ProduktySzukaj()
         {
             InitializeComponent();
+
+            UpdateUi();
+            KategoriaCB.SelectionChanged += (sender, args) =>
+            {
+                if (KategoriaCB.SelectedItem != null)
+                {
+                    using (var context = new WypozyczalniaEntities())
+                    {
+                        var modele = context.Produkty
+                            .Where(x => x.IDKategorii == ((Kategorie) KategoriaCB.SelectedItem).IDKategorii)
+                            .Select(y => y.Model).Distinct().ToList();
+                        var marki = context.Produkty
+                            .Where(x => x.IDKategorii == ((Kategorie) KategoriaCB.SelectedItem).IDKategorii)
+                            .Select(y => y.Marka).Distinct().ToList();
+                        ModelCB.ItemsSource = modele;
+                        MarkaCB.ItemsSource = marki;
+                    }
+                }
+            };
+
+            MarkaCB.SelectionChanged += (sender, args) =>
+            {
+                if (MarkaCB.SelectedItem != null)
+                {
+                    using (var context = new WypozyczalniaEntities())
+                    {
+                        if (KategoriaCB.SelectedItem != null)
+                        {
+                            var modele = context.Produkty
+                                .Where(x => x.IDKategorii == ((Kategorie) KategoriaCB.SelectedItem).IDKategorii &&
+                                            x.Marka == (string) MarkaCB.SelectedItem)
+                                .Select(y => y.Model).Distinct().ToList();
+                            ModelCB.ItemsSource = modele;
+                        }
+                    }
+                }
+            };
         }
 
-        private void SzukajBtn_Click(object sender, RoutedEventArgs e)
+        private void UpdateUi()
         {
             using (var context = new WypozyczalniaEntities())
             {
-
-                //todo wyszukiwanie produktow 
+                KategoriaCB.ItemsSource = context.Kategorie.ToList();
+                KategoriaCB.DisplayMemberPath = "NazwaKategorii";
+                PunktCB.ItemsSource = context.PunktObslugi.ToList();
+                PunktCB.DisplayMemberPath = "Miasto";
+                MarkaCB.ItemsSource = context.Produkty.Select(x => x.Marka).Distinct().ToList();
+                ModelCB.ItemsSource = context.Produkty.Select(x => x.Model).Distinct().ToList();
+                PunktCB.SelectedItem = null;
+                KategoriaCB.SelectedItem = null;
+                MarkaCB.SelectedItem = null;
+                ModelCB.SelectedItem = null;
             }
         }
 
-        private void CellOnClick(object sender, MouseButtonEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            using (var context = new WypozyczalniaEntities())
+            {
+                ProduktyGrid.ItemsSource = context.Produkty.Join(context.ProduktySz,
+                    produkty => produkty.IDProduktu, sz => sz.IDProduktu,
+                    (produkty, sz) => new
+                    {
+                        ID = sz.IDProduktuSz,
+                        Marka = produkty.Marka,
+                        Model = produkty.Model,
+                        Doba = produkty.CenaZaDobe,
+                        Kaucja = produkty.Kaucja,
+                        
+                        Kategoria = produkty.IDKategorii,
+                        PunktO = context.PunktObslugi.FirstOrDefault(x => x.IDPunktu == sz.IDPunktu).Miasto,
+                        StanTechniczny = sz.StanTechniczny
+                    }).Where(arg =>
+                    arg.Kategoria == ((Kategorie) KategoriaCB.SelectedItem).IDKategorii &&
+                    arg.Model == ModelCB.SelectedItem && arg.Marka == MarkaCB.SelectedItem).ToList();
+            }
+        }
+
+        private void ClearBtn_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateUi();
         }
     }
 }

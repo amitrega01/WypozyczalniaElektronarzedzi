@@ -1,19 +1,34 @@
 ﻿<UserControl x:Class="WypozyczalniaElektronarzedzi.ProduktySzukaj"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             
+
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:WypozyczalniaElektronarzedzi"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="1516" d:DesignWidth="856.8">
     <Grid Background="#fff" Margin="0,0,0,0">
-        <Label Content="Szukaj produktu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox x:Name="SzukajProduktuTB" HorizontalAlignment="Left" Height="23" Margin="117,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="165"/>
-        <Button x:Name="SzukajBtn" Content="Szukaj" HorizontalAlignment="Left" Margin="287,6,0,0" VerticalAlignment="Top" Width="108"  Click="SzukajBtn_Click" Height="30"/>
-        <materialDesign:Card  Margin="10,20,10,10" VerticalAlignment="Stretch">
-            <DataGrid Background="#00ffff00" x:Name="ProduktyGrids"></DataGrid>
+        <Label Content="Szukaj produktow" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
+               FontWeight="Bold" />
+        <materialDesign:Card Margin="10,20,9.8,10" VerticalAlignment="Stretch">
+            <Grid>
+                <ComboBox x:Name="KategoriaCB" materialDesign:HintAssist.Hint="Kategoria" HorizontalAlignment="Left"
+                          Margin="135,10,0,0" VerticalAlignment="Top" Width="120" />
+                <ComboBox x:Name="PunktCB" materialDesign:HintAssist.Hint="Punkt obslugi" HorizontalAlignment="Left"
+                          Margin="10,10,0,0" VerticalAlignment="Top" Width="120" />
+                <ComboBox x:Name="MarkaCB" materialDesign:HintAssist.Hint="Marka" HorizontalAlignment="Left"
+                          Margin="260,10,0,0" VerticalAlignment="Top" Width="120" />
+                <ComboBox x:Name="ModelCB" materialDesign:HintAssist.Hint="Marka" HorizontalAlignment="Left"
+                          Margin="385,10,0,0" VerticalAlignment="Top" Width="120" />
+                <DataGrid x:Name="ProduktyGrid" Margin="4,44,4,4" Background="#00000000" />
+                <Button Content="Szukaj" HorizontalAlignment="Left" Margin="527,7,0,0" VerticalAlignment="Top"
+                        Width="75" Click="Button_Click" />
+                <Button Content="Wyczyść" HorizontalAlignment="Left" Margin="607,7,0,0" VerticalAlignment="Top"
+                    Width="93" Click="ClearBtn_Click" Background="#AB0000" />
+            </Grid>
+
         </materialDesign:Card>
+
     </Grid>
 </UserControl>

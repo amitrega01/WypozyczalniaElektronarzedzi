@@ -18,6 +18,7 @@ namespace Model
         public PunktObslugi()
         {
             this.Pracownicy = new HashSet<Pracownicy>();
+            this.ProduktySz = new HashSet<ProduktySz>();
         }
     
         public int IDPunktu { get; set; }
@@ -27,5 +28,7 @@ namespace Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pracownicy> Pracownicy { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProduktySz> ProduktySz { get; set; }
     }
 }
