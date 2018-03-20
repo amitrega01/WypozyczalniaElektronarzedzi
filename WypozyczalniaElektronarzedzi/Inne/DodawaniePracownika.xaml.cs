@@ -3,8 +3,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Model;
+using WypozyczalniaElektronarzedzi;
 
-namespace WypozyczalniaElektronarzedzi.UI
+namespace WypozyczalniaElektronarzedzi
 {
     /// <summary>
     /// Logika interakcji dla klasy DodawaniePracownika.xaml
@@ -21,7 +22,6 @@ namespace WypozyczalniaElektronarzedzi.UI
             }
         }
 
-       
 
         private void CreatePracownikBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -31,7 +31,7 @@ namespace WypozyczalniaElektronarzedzi.UI
                 Nazwisko = NazwiskoTextBox.Text,
                 PESEL = Convert.ToDecimal(PESELTextBox.Text),
                 Haslo = HasloTextBox.Text,
-                PunktObslugi = PunktObslugi.SelectedIndex+1
+                PunktObslugi = PunktObslugi.SelectedIndex + 1
             };
 
             using (var context = new WypozyczalniaEntities())
@@ -40,6 +40,7 @@ namespace WypozyczalniaElektronarzedzi.UI
                 context.SaveChanges();
             }
 
+            MainWindow.AppWindow.WyswietlaniePracownikowUC.UpdateUI();
             ImieTextBox.Text = String.Empty;
             NazwiskoTextBox.Text = String.Empty;
             PESELTextBox.Text = String.Empty;

@@ -19,6 +19,7 @@ namespace Model
         public string Nazwisko { get; set; }
         public string Haslo { get; set; }
         public int PunktObslugi { get; set; }
-        
+    
+        public virtual PunktObslugi PunktObslugi1 { get; set; }
     }
 }

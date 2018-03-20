@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AutoMapper;
 using Model;
+using WypozyczalniaElektronarzedzi.UI;
 
 namespace WypozyczalniaElektronarzedzi
 {
@@ -26,11 +28,11 @@ namespace WypozyczalniaElektronarzedzi
         /// </summary>
         public Pracownicy pracownik { get; set; }
 
+        public static MainWindow AppWindow;
         public MainWindow()
         {
             InitializeComponent();
-
-           
+            AppWindow = this;
         }
 
         private void LogInBtn_Click(object sender, RoutedEventArgs e)
@@ -64,6 +66,7 @@ namespace WypozyczalniaElektronarzedzi
             }
         }
 
-     
+
+       
     }
 }

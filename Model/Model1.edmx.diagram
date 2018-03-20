@@ -4,11 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0c00e6753ac540c99451418b031f0821" Name="Diagram1">
-        <EntityTypeShape EntityType="WypozyczalniaModel.Pracownicy" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczalniaModel.PunktObslugi" Width="1.5" PointX="3" PointY="0.875" />
-        <EntityTypeShape EntityType="WypozyczalniaModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" />
-        <AssociationConnector Association="WypozyczalniaModel.FK_PracownicyPunktObslugi" />
+      <Diagram DiagramId="5be8fc2d80f24bcc99cfc25c506195fe" Name="Diagram1">
+        <EntityTypeShape EntityType="WypozyczalniaModel.Kategorie" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.Pracownicy" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.Produkty" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.PunktObslugi" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="WypozyczalniaModel.FK_Kategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="WypozyczalniaModel.FK_PracownicyPunktObslugi" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

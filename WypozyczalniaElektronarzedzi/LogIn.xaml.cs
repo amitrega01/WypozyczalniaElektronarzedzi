@@ -38,6 +38,7 @@ namespace WypozyczalniaElektronarzedzi
                 {
                     try
                     {
+                        
                         var res = context.Pracownicy.Single<Pracownicy>(x => x.PESEL.ToString() == PeselText.Text && x.Haslo == PasswordText.Password);
                         MainWindow mainWindow = new MainWindow();
                         mainWindow.pracownik = res;

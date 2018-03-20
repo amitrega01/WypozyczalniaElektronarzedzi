@@ -12,20 +12,18 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class PunktObslugi
+    public partial class Kategorie
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PunktObslugi()
+        public Kategorie()
         {
-            this.Pracownicy = new HashSet<Pracownicy>();
+            this.Produkty = new HashSet<Produkty>();
         }
     
-        public int IDPunktu { get; set; }
-        public string Ulica { get; set; }
-        public string NrDomu { get; set; }
-        public string Miasto { get; set; }
+        public int IDKategorii { get; set; }
+        public string NazwaKategorii { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pracownicy> Pracownicy { get; set; }
+        public virtual ICollection<Produkty> Produkty { get; set; }
     }
 }

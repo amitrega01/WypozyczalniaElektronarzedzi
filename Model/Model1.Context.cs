@@ -25,8 +25,9 @@ namespace Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Kategorie> Kategorie { get; set; }
         public virtual DbSet<Pracownicy> Pracownicy { get; set; }
+        public virtual DbSet<Produkty> Produkty { get; set; }
         public virtual DbSet<PunktObslugi> PunktObslugi { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

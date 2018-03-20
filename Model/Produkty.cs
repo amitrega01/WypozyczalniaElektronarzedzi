@@ -12,12 +12,15 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class Produkty
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int IDProduktu { get; set; }
+        public int IDKategorii { get; set; }
+        public string Marka { get; set; }
+        public string Model { get; set; }
+        public decimal CenaZaDobe { get; set; }
+        public decimal Kaucja { get; set; }
+    
+        public virtual Kategorie Kategorie { get; set; }
     }
 }

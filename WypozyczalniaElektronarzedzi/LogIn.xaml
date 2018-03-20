@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WypozyczalniaElektronarzedzi"
         mc:Ignorable="d"
-        Title="LogIn" Height="135" Width="280"
+        Title="LogIn" Height="155.141" Width="263.428"
         ResizeMode="NoResize">
     <Grid>
         <Label 
@@ -24,22 +24,23 @@
             Height="23" Margin="57,12,0,0"
             TextWrapping="Wrap" Text="" 
             VerticalAlignment="Top"
-            Width="180"/>
-    
+            Width="180" TextAlignment="Right"/>
+
         <PasswordBox
             Name="PasswordText"
             HorizontalAlignment="Left"
+            HorizontalContentAlignment="Right"
             Margin="57,44,0,0"
             VerticalAlignment="Top"
             Width="180" 
-            Height="23"/>
+            Height="23" SelectionOpacity="4"/>
         <Button
             Content="Zaloguj"
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
-            Width="75" 
+            Width="180" 
             Click="LogIn_Click"
-            Margin="0,0,0,8"/>
+            Margin="57,0,19.8,9.6" Height="33"/>
 
     </Grid>
 </Window>
