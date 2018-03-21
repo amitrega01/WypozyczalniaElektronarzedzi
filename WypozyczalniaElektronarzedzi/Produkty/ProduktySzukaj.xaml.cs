@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
+using WypozyczalniaElektronarzedzi.UI;
 
 namespace WypozyczalniaElektronarzedzi
 {
@@ -21,46 +22,82 @@ namespace WypozyczalniaElektronarzedzi
     /// </summary>
     public partial class ProduktySzukaj : UserControl
     {
+        private List<ProduktyDto> produktyRes;
+
         public ProduktySzukaj()
         {
             InitializeComponent();
 
             UpdateUi();
-            KategoriaCB.SelectionChanged += (sender, args) =>
+            KategoriaCB.SelectionChanged += (sender, args) => { UpdateResults(KategoriaCB); };
+
+            MarkaCB.SelectionChanged += (sender, args) => { UpdateResults(MarkaCB); };
+            ModelCB.SelectionChanged += (sender, args) => { UpdateResults(ModelCB); };
+        }
+
+        private void UpdateResults(object sender)
+        {
+            if (sender == KategoriaCB)
             {
                 if (KategoriaCB.SelectedItem != null)
                 {
-                    using (var context = new WypozyczalniaEntities())
-                    {
-                        var modele = context.Produkty
+                    
+                        var modele = produktyRes
                             .Where(x => x.IDKategorii == ((Kategorie) KategoriaCB.SelectedItem).IDKategorii)
                             .Select(y => y.Model).Distinct().ToList();
-                        var marki = context.Produkty
+                        var marki = produktyRes
                             .Where(x => x.IDKategorii == ((Kategorie) KategoriaCB.SelectedItem).IDKategorii)
                             .Select(y => y.Marka).Distinct().ToList();
                         ModelCB.ItemsSource = modele;
                         MarkaCB.ItemsSource = marki;
-                    }
+                        ProduktyGrid.ItemsSource = produktyRes.Where(arg =>
+                                arg.IDKategorii == ((Kategorie) KategoriaCB.SelectedItem).IDKategorii)
+                            .ToList();
+                    
+                    ModelCB.SelectedItem = null;
+                    MarkaCB.SelectedItem = null;
+                    
                 }
-            };
-
-            MarkaCB.SelectionChanged += (sender, args) =>
+            }
+            else if (sender == MarkaCB)
             {
                 if (MarkaCB.SelectedItem != null)
                 {
-                    using (var context = new WypozyczalniaEntities())
-                    {
-                        if (KategoriaCB.SelectedItem != null)
-                        {
-                            var modele = context.Produkty
-                                .Where(x => x.IDKategorii == ((Kategorie) KategoriaCB.SelectedItem).IDKategorii &&
-                                            x.Marka == (string) MarkaCB.SelectedItem)
-                                .Select(y => y.Model).Distinct().ToList();
-                            ModelCB.ItemsSource = modele;
-                        }
+                    List<String> modele;
+                    if (KategoriaCB.SelectedItem != null) {
+                         modele = produktyRes
+                            .Where(x => x.IDKategorii == ((Kategorie)KategoriaCB.SelectedItem)?.IDKategorii &&
+                                        x.Marka == (string)MarkaCB.SelectedItem)
+                            .Select(y => y.Model).Distinct().ToList();
+
+                        ProduktyGrid.ItemsSource = produktyRes.Where(arg =>
+                                arg.Marka == MarkaCB.SelectedItem.ToString() && arg.IDKategorii ==
+                                ((Kategorie)KategoriaCB.SelectedItem)?.IDKategorii)
+                            .ToList();
+
                     }
+                    else
+                    {
+                         modele = produktyRes
+                            .Where(x => x.Marka == (string)MarkaCB.SelectedItem)
+                            .Select(y => y.Model).Distinct().ToList();
+
+                        ProduktyGrid.ItemsSource = produktyRes.Where(arg =>
+                                arg.Marka == MarkaCB.SelectedItem.ToString())
+                            .ToList();
+                    }
+                    ModelCB.ItemsSource = modele;
+
+                    
                 }
-            };
+            }
+            else if (sender == ModelCB)
+            {
+                if (ModelCB.SelectedItem != null)
+                {
+                    ProduktyGrid.ItemsSource = produktyRes.Where((dto => dto.Model == ModelCB.SelectedItem.ToString()));
+                }
+            }
         }
 
         private void UpdateUi()
@@ -77,30 +114,46 @@ namespace WypozyczalniaElektronarzedzi
                 KategoriaCB.SelectedItem = null;
                 MarkaCB.SelectedItem = null;
                 ModelCB.SelectedItem = null;
-            }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            using (var context = new WypozyczalniaEntities())
-            {
-                ProduktyGrid.ItemsSource = context.Produkty.Join(context.ProduktySz,
+                produktyRes = context.Produkty.Join(context.ProduktySz,
                     produkty => produkty.IDProduktu, sz => sz.IDProduktu,
-                    (produkty, sz) => new
+                    (produkty, sz) => new ProduktyDto
                     {
                         ID = sz.IDProduktuSz,
                         Marka = produkty.Marka,
                         Model = produkty.Model,
                         Doba = produkty.CenaZaDobe,
                         Kaucja = produkty.Kaucja,
-                        
-                        Kategoria = produkty.IDKategorii,
-                        PunktO = context.PunktObslugi.FirstOrDefault(x => x.IDPunktu == sz.IDPunktu).Miasto,
+                        IDKategorii = produkty.IDKategorii,
+                        PunktO = context.PunktObslugi.FirstOrDefault(x => x.IDPunktu == sz.IDPunktu)
+                            .Miasto,
                         StanTechniczny = sz.StanTechniczny
-                    }).Where(arg =>
-                    arg.Kategoria == ((Kategorie) KategoriaCB.SelectedItem).IDKategorii &&
-                    arg.Model == ModelCB.SelectedItem && arg.Marka == MarkaCB.SelectedItem).ToList();
+                    }).ToList();
+                ProduktyGrid.ItemsSource = produktyRes;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+                        using (var context = new WypozyczalniaEntities())
+                        {
+                            ProduktyGrid.ItemsSource = context.Produkty.Join(context.ProduktySz,
+                                produkty => produkty.IDProduktu, sz => sz.IDProduktu,
+                                (produkty, sz) => new ProduktyDto
+                                {
+                                    ID = sz.IDProduktuSz,
+                                    Marka = produkty.Marka,
+                                    Model = produkty.Model,
+                                    Doba = produkty.CenaZaDobe,
+                                    Kaucja = produkty.Kaucja,
+            
+                                    IDKategorii = produkty.IDKategorii,
+                                    PunktO = context.PunktObslugi.FirstOrDefault(x => x.IDPunktu == sz.IDPunktu).Miasto,
+                                    StanTechniczny = sz.StanTechniczny
+                                }).Where(arg =>
+                                arg.IDKategorii == ((Kategorie) KategoriaCB.SelectedItem).IDKategorii &&
+                                arg.Model == ModelCB.SelectedItem && arg.Marka == MarkaCB.SelectedItem).ToList();
+                        }*/
         }
 
         private void ClearBtn_Click(object sender, RoutedEventArgs e)

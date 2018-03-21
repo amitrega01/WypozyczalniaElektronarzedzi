@@ -16,7 +16,7 @@ namespace Model
     {
         public int IDProduktuSz { get; set; }
         public int IDProduktu { get; set; }
-        public Nullable<int> StanTechniczny { get; set; }
+        public int StanTechniczny { get; set; }
         public int IDPunktu { get; set; }
     
         public virtual Produkty Produkty { get; set; }
