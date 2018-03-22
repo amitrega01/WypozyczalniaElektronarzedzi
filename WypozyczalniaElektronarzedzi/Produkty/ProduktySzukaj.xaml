@@ -17,7 +17,7 @@
                           Margin="135,10,0,0" VerticalAlignment="Top" Width="120" />
                 <ComboBox x:Name="PunktCB" materialDesign:HintAssist.Hint="Punkt obslugi" HorizontalAlignment="Left"
                           Margin="10,10,0,0" VerticalAlignment="Top" Width="120" />
-                <ComboBox x:Name="MarkaCB" materialDesign:HintAssist.Hint="Marka" HorizontalAlignment="Left"
+                <ComboBox x:Name="MarkaCB" materialDesign:HintAssist.Hint="Marka"  HorizontalAlignment="Left"
                           Margin="260,10,0,0" VerticalAlignment="Top" Width="120" />
                 <ComboBox x:Name="ModelCB" materialDesign:HintAssist.Hint="Marka" HorizontalAlignment="Left"
                           Margin="385,10,0,0" VerticalAlignment="Top" Width="120" />

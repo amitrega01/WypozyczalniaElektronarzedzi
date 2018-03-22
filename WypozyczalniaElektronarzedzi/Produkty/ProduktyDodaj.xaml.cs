@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
-using Model;
+using ModelBazy ;
 
 namespace WypozyczalniaElektronarzedzi
 {
@@ -29,35 +29,6 @@ namespace WypozyczalniaElektronarzedzi
             InitializeComponent();
 
 
-            UpdateUI();
-        }
-
-
-        private void UpdateUI()
-
-        {
-            KategoriaCB.ItemsSource = null;
-
-            using (var context = new WypozyczalniaEntities())
-            {
-                StanTechCB.ItemsSource = stanTechniczny;
-                PunktObslugiCB.ItemsSource = context.PunktObslugi.ToList();
-                PunktObslugiCB.DisplayMemberPath = "Miasto";
-                KategoriaCB.ItemsSource = context.Kategorie.Select(x => x).ToList();
-                KategoriaCB.DisplayMemberPath = "NazwaKategorii";
-
-
-                MarkaCB.ItemsSource = context.Produkty.Select(x => x.Marka).Distinct().ToList();
-                ModelCB.ItemsSource = context.Produkty.Select(x => x.Model).Distinct().ToList();
-                StanTechCB2.ItemsSource = stanTechniczny;
-                PunktObslugiCB2.ItemsSource = context.PunktObslugi.ToList();
-
-
-                PunktObslugiCB2.DisplayMemberPath = "Miasto";
-
-                // KategoriaCB.Items.Add(b);
-            }
-
             MarkaCB.SelectionChanged += (sender, args) =>
             {
                 using (var context = new WypozyczalniaEntities())
@@ -67,6 +38,49 @@ namespace WypozyczalniaElektronarzedzi
                         .Distinct().ToList();
                 }
             };
+
+            UpdateUI();
+        }
+
+
+        private void UpdateUI()
+
+        {
+               
+
+            using (var context = new WypozyczalniaEntities())
+            {
+                StanTechCB.ItemsSource = stanTechniczny;
+                PunktObslugiCB.ItemsSource = context.PunktyObslugi.ToList();
+                PunktObslugiCB.DisplayMemberPath = "Miasto";
+                KategoriaCB.ItemsSource = context.Kategorie.Select(x => x).ToList();
+                KategoriaCB.DisplayMemberPath = "Nazwa";
+
+
+                MarkaCB.ItemsSource = context.Produkty.Select(x => x.Marka).Distinct().ToList();
+                ModelCB.ItemsSource = context.Produkty.Select(x => x.Model).Distinct().ToList();
+                StanTechCB2.ItemsSource = stanTechniczny;
+                PunktObslugiCB2.ItemsSource = context.PunktyObslugi.ToList();
+
+
+                PunktObslugiCB2.DisplayMemberPath = "Miasto";
+
+                // KategoriaCB.Items.Add(b);
+            }
+
+            KategoriaCB.SelectedItem = null;
+            StanTechCB.SelectedItem = null;
+            StanTechCB2.SelectedItem = null;
+            PunktObslugiCB.SelectedItem = null;
+            PunktObslugiCB2.SelectedItem = null;
+            MarkaCB.SelectedItem = null;
+            ModelCB.SelectedItem = null;
+            ModelTB.Text = String.Empty;
+            MarkaTB.Text = String.Empty;
+            CenaZaDobeTB.Text = String.Empty;
+            Kaucja.Text = String.Empty;
+
+
         }
 
         private void DodajProduktBtn_Click(object sender, RoutedEventArgs e)
@@ -80,7 +94,7 @@ namespace WypozyczalniaElektronarzedzi
                     Produkty entity = new Produkty
                     {
                         IDProduktu = context.Produkty.Select(x => x.IDProduktu).Max() + 1,
-                        IDKategorii = ((Kategorie) KategoriaCB.SelectedItem).IDKategorii,
+                        Kategoria = ((Kategorie) KategoriaCB.SelectedItem).IDKategorii,
                         Marka = MarkaTB.Text,
                         Model = ModelTB.Text,
                         CenaZaDobe = Convert.ToDecimal(CenaZaDobeTB.Text),
@@ -90,13 +104,14 @@ namespace WypozyczalniaElektronarzedzi
                     ProduktySz entity2 = new ProduktySz
                     {
                         IDProduktu = entity.IDProduktu,
-                        IDProduktuSz = context.ProduktySz.Select(x => x.IDProduktuSz).Max() + 1,
-                        IDPunktu = ((PunktObslugi) PunktObslugiCB.SelectedItem).IDPunktu,
-                        StanTechniczny = ((int) StanTechCB.SelectedItem)
+                        IDProduktuSZ = context.ProduktySz.Select(x => x.IDProduktuSZ).Max() + 1,
+                        IDPunktuObslugi = ((PunktyObslugi) PunktObslugiCB.SelectedItem).IDPunktuObslugi,
+                        Stantechniczny = ((int) StanTechCB.SelectedItem)
                     };
                     context.ProduktySz.Add(entity2);
 
                     context.SaveChanges();
+                    UpdateUI();
                 }
             }
         }
@@ -119,13 +134,14 @@ namespace WypozyczalniaElektronarzedzi
                         x.Marka == MarkaCB.SelectedItem && x.Model == ModelCB.SelectedItem);
                     ProduktySz entity = new ProduktySz
                     {
-                        IDProduktuSz = context.ProduktySz.Select(x=>x.IDProduktuSz).Max()+1,
+                        IDProduktuSZ = context.ProduktySz.Select(x=>x.IDProduktuSZ).Max()+1,
                         IDProduktu = matka.IDProduktu,
-                        IDPunktu = ((PunktObslugi) PunktObslugiCB2.SelectedItem).IDPunktu,
-                        StanTechniczny = ((int) StanTechCB2.SelectedItem)
+                        IDPunktuObslugi= ((PunktyObslugi) PunktObslugiCB2.SelectedItem).IDPunktuObslugi,
+                        Stantechniczny= ((int) StanTechCB2.SelectedItem)
                     };
                     context.ProduktySz.Add(entity);
                     context.SaveChanges();
+                    UpdateUI();
                 }
             }
         }

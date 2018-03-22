@@ -13,7 +13,7 @@ namespace WypozyczalniaElektronarzedzi.UI
         public String  Model { get; set; }
         public decimal Doba { get; set; }
         public decimal Kaucja { get; set; }
-        public int IDKategorii { get; set; }
+        public int? IDKategorii { get; set; }
         public String PunktO { get; set; }
         public int StanTechniczny { get; set; }
 

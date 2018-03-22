@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AutoMapper;
-using Model;
+using ModelBazy;
 using WypozyczalniaElektronarzedzi.UI;
 
 namespace WypozyczalniaElektronarzedzi
@@ -34,7 +34,7 @@ namespace WypozyczalniaElektronarzedzi
             UpdateUI();
             PracownicyGrid.AutoGenerateColumns = true;
             this.Width = PracownicyGrid.RowHeaderActualWidth;
-        }
+        }   
 
         private void CellOnClick(object sender, MouseButtonEventArgs e)
         {
@@ -47,8 +47,8 @@ namespace WypozyczalniaElektronarzedzi
         {
             using (var context = new WypozyczalniaEntities())
             {
-                var temp = context.Pracownicy.Join(context.PunktObslugi, pracownicy => pracownicy.PunktObslugi,
-                    obslugi => obslugi.IDPunktu, (pracownicy, obslugi) => new
+                var temp = context.Pracownicy.Join(context.PunktyObslugi, pracownicy => pracownicy.IDPunktuObslugi,
+                    obslugi => obslugi.IDPunktuObslugi, (pracownicy, obslugi) => new
                     {
                         Pesel = pracownicy.PESEL,
                         Imie = pracownicy.Imie,

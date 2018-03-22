@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Model;
+using ModelBazy;
 using WypozyczalniaElektronarzedzi.UI;
 
 namespace WypozyczalniaElektronarzedzi
@@ -22,7 +22,7 @@ namespace WypozyczalniaElektronarzedzi
     /// </summary>
     public partial class ProduktySzukaj : UserControl
     {
-        private List<ProduktyDto> produktyRes;
+        private List<PelnyProdukt> produktyRes;
 
         public ProduktySzukaj()
         {
@@ -41,22 +41,20 @@ namespace WypozyczalniaElektronarzedzi
             {
                 if (KategoriaCB.SelectedItem != null)
                 {
-                    
-                        var modele = produktyRes
-                            .Where(x => x.IDKategorii == ((Kategorie) KategoriaCB.SelectedItem).IDKategorii)
-                            .Select(y => y.Model).Distinct().ToList();
-                        var marki = produktyRes
-                            .Where(x => x.IDKategorii == ((Kategorie) KategoriaCB.SelectedItem).IDKategorii)
-                            .Select(y => y.Marka).Distinct().ToList();
-                        ModelCB.ItemsSource = modele;
-                        MarkaCB.ItemsSource = marki;
-                        ProduktyGrid.ItemsSource = produktyRes.Where(arg =>
-                                arg.IDKategorii == ((Kategorie) KategoriaCB.SelectedItem).IDKategorii)
-                            .ToList();
-                    
+                    var modele = produktyRes
+                        .Where(x => x.Kategoria == ((Kategorie) KategoriaCB.SelectedItem).Nazwa)
+                        .Select(y => y.Model).Distinct().ToList();
+                    var marki = produktyRes
+                        .Where(x => x.Kategoria == ((Kategorie) KategoriaCB.SelectedItem).Nazwa)
+                        .Select(y => y.Marka).Distinct().ToList();
+                    ModelCB.ItemsSource = modele;
+                    MarkaCB.ItemsSource = marki;
+                    ProduktyGrid.ItemsSource = produktyRes.Where(arg =>
+                            arg.Kategoria== ((Kategorie) KategoriaCB.SelectedItem).Nazwa)
+                        .ToList();
+
                     ModelCB.SelectedItem = null;
                     MarkaCB.SelectedItem = null;
-                    
                 }
             }
             else if (sender == MarkaCB)
@@ -64,31 +62,30 @@ namespace WypozyczalniaElektronarzedzi
                 if (MarkaCB.SelectedItem != null)
                 {
                     List<String> modele;
-                    if (KategoriaCB.SelectedItem != null) {
-                         modele = produktyRes
-                            .Where(x => x.IDKategorii == ((Kategorie)KategoriaCB.SelectedItem)?.IDKategorii &&
-                                        x.Marka == (string)MarkaCB.SelectedItem)
+                    if (KategoriaCB.SelectedItem != null)
+                    {
+                        modele = produktyRes
+                            .Where(x => x.Kategoria == ((Kategorie) KategoriaCB.SelectedItem).Nazwa &&
+                                        x.Marka == (string) MarkaCB.SelectedItem)
                             .Select(y => y.Model).Distinct().ToList();
 
                         ProduktyGrid.ItemsSource = produktyRes.Where(arg =>
-                                arg.Marka == MarkaCB.SelectedItem.ToString() && arg.IDKategorii ==
-                                ((Kategorie)KategoriaCB.SelectedItem)?.IDKategorii)
+                                arg.Marka == MarkaCB.SelectedItem.ToString() &&
+                                arg.Kategoria == ((Kategorie) KategoriaCB.SelectedItem).Nazwa)
                             .ToList();
-
                     }
                     else
                     {
-                         modele = produktyRes
-                            .Where(x => x.Marka == (string)MarkaCB.SelectedItem)
+                        modele = produktyRes
+                            .Where(x => x.Marka == (string) MarkaCB.SelectedItem)
                             .Select(y => y.Model).Distinct().ToList();
 
                         ProduktyGrid.ItemsSource = produktyRes.Where(arg =>
                                 arg.Marka == MarkaCB.SelectedItem.ToString())
                             .ToList();
                     }
-                    ModelCB.ItemsSource = modele;
 
-                    
+                    ModelCB.ItemsSource = modele;
                 }
             }
             else if (sender == ModelCB)
@@ -105,8 +102,8 @@ namespace WypozyczalniaElektronarzedzi
             using (var context = new WypozyczalniaEntities())
             {
                 KategoriaCB.ItemsSource = context.Kategorie.ToList();
-                KategoriaCB.DisplayMemberPath = "NazwaKategorii";
-                PunktCB.ItemsSource = context.PunktObslugi.ToList();
+                KategoriaCB.DisplayMemberPath = "Nazwa";
+                PunktCB.ItemsSource = context.PunktyObslugi.ToList();
                 PunktCB.DisplayMemberPath = "Miasto";
                 MarkaCB.ItemsSource = context.Produkty.Select(x => x.Marka).Distinct().ToList();
                 ModelCB.ItemsSource = context.Produkty.Select(x => x.Model).Distinct().ToList();
@@ -114,20 +111,7 @@ namespace WypozyczalniaElektronarzedzi
                 KategoriaCB.SelectedItem = null;
                 MarkaCB.SelectedItem = null;
                 ModelCB.SelectedItem = null;
-                produktyRes = context.Produkty.Join(context.ProduktySz,
-                    produkty => produkty.IDProduktu, sz => sz.IDProduktu,
-                    (produkty, sz) => new ProduktyDto
-                    {
-                        ID = sz.IDProduktuSz,
-                        Marka = produkty.Marka,
-                        Model = produkty.Model,
-                        Doba = produkty.CenaZaDobe,
-                        Kaucja = produkty.Kaucja,
-                        IDKategorii = produkty.IDKategorii,
-                        PunktO = context.PunktObslugi.FirstOrDefault(x => x.IDPunktu == sz.IDPunktu)
-                            .Miasto,
-                        StanTechniczny = sz.StanTechniczny
-                    }).ToList();
+                produktyRes = context.PelnyProdukt.ToList();
                 ProduktyGrid.ItemsSource = produktyRes;
             }
         }

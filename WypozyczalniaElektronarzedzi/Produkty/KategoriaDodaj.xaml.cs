@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Model;
+using ModelBazy;
 
 namespace WypozyczalniaElektronarzedzi
 {
@@ -43,7 +43,7 @@ namespace WypozyczalniaElektronarzedzi
                 Kategorie entity = new Kategorie
                 {
                     IDKategorii = a,
-                    NazwaKategorii = NazwaTB.Text
+                    Nazwa = NazwaTB.Text
                 };
                 context.Kategorie.Add(entity);
                 context.SaveChanges();

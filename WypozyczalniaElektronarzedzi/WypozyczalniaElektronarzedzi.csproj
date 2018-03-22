@@ -160,9 +160,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{c0dab2ea-080d-4540-9c50-c4bd8e4d59ef}</Project>
-      <Name>Model</Name>
+    <ProjectReference Include="..\ModelBazy\ModelBazy.csproj">
+      <Project>{3af11f3f-fa0f-484c-8718-59ce61c7e9ab}</Project>
+      <Name>ModelBazy</Name>
     </ProjectReference>
     <ProjectReference Include="..\UI\UI.csproj">
       <Project>{060d1d20-2503-4a75-a18b-bfbf73bd5975}</Project>

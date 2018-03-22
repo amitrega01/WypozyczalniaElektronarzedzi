@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Model;
+using ModelBazy;
 using WypozyczalniaElektronarzedzi;
 
 namespace WypozyczalniaElektronarzedzi
@@ -17,7 +17,7 @@ namespace WypozyczalniaElektronarzedzi
             InitializeComponent();
             using (var context = new WypozyczalniaEntities())
             {
-                var punktyObslugi = context.PunktObslugi.ToList();
+                var punktyObslugi = context.PunktyObslugi.ToList();
                 PunktObslugi.ItemsSource = punktyObslugi;
                 PunktObslugi.DisplayMemberPath = "Miasto";
             }
@@ -30,9 +30,10 @@ namespace WypozyczalniaElektronarzedzi
             {
                 Imie = ImieTextBox.Text,
                 Nazwisko = NazwiskoTextBox.Text,
-                PESEL = Convert.ToDecimal(PESELTextBox.Text),
+                PESEL = PESELTextBox.Text,
                 Haslo = HasloTextBox.Text,
-                PunktObslugi = (PunktObslugi.SelectedItem as PunktObslugi).IDPunktu
+                IDPunktuObslugi= (PunktObslugi.SelectedItem as PunktyObslugi).IDPunktuObslugi,
+                DataZatrudnienia = DateTime.Now
             };
 
             using (var context = new WypozyczalniaEntities())
