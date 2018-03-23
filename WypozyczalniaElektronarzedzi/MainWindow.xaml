@@ -31,7 +31,12 @@
             </TabItem>
             <TabItem Header="Klienci">
                 <Grid Background="#FFF" >
-                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="814*"/>
+                        <ColumnDefinition Width="301*"/>
+                    </Grid.ColumnDefinitions>
+                    <local:DodawanieKlienta Grid.Column="1" Height="292" Margin="11,10,10.333,0" VerticalAlignment="Top"/>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Wypożyczenia">
