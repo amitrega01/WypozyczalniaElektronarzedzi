@@ -14,7 +14,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Wypożyczalnia Elektronarzędzi" Height="605.173" Width="1128.289">
+        Title="Wypożyczalnia Elektronarzędzi" Height="605.173" Width="1128.289" WindowState="Maximized">
     <Grid>
         <Label VerticalAlignment="Center" HorizontalAlignment="Center" Content="Zaloguj sie aby kontynuowac" />
         <TabControl Name="Tabs" Margin="0,0,0,0">
