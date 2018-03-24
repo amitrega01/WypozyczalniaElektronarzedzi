@@ -21,11 +21,11 @@
             <TabItem Header="Produkty">
                 <Grid Background="#FFF" >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="757*"/>
-                        <ColumnDefinition Width="359*"/>
+                        <ColumnDefinition Width="814*"/>
+                        <ColumnDefinition Width="301*"/>
                     </Grid.ColumnDefinitions>
-                    <local:ProduktySzukaj x:Name="ProduktySzukajUC"  Grid.Column="0" Margin="0,0,2.8,0.4"/>
-                    <local:ProduktyDodaj x:Name="ProduktyDodajUC" Grid.Column="1" Margin="4.2,0,0,0.4" />
+                    <local:ProduktySzukaj x:Name="ProduktySzukajUC"  Grid.Column="0" />
+                    <local:ProduktyDodaj x:Name="ProduktyDodajUC" Grid.Column="1"  VerticalAlignment="Top" Height="400"  />
 
                 </Grid>
             </TabItem>
@@ -35,12 +35,19 @@
                         <ColumnDefinition Width="814*"/>
                         <ColumnDefinition Width="301*"/>
                     </Grid.ColumnDefinitions>
-                    <local:DodawanieKlienta Grid.Column="1" Height="292" Margin="11,10,10.333,0" VerticalAlignment="Top"/>
+                    <local:WyswietlanieKlientow x:Name="WyswietlnieKlientowUC" Grid.Column="0" />
+                    <local:DodawanieKlienta x:Name="DodawanieKlientaUC" Grid.Column="1" Height="292" VerticalAlignment="Top"/>
 
                 </Grid>
             </TabItem>
             <TabItem Header="Wypożyczenia">
-                <Grid Background="#FFF" />
+                <Grid Background="#FFF" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="814*"/>
+                        <ColumnDefinition Width="301*"/>
+                    </Grid.ColumnDefinitions>
+                    <local:WypozyczenieDodaj x:Name="WypozeyczenieDodajUC" Grid.Column="0"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Rezerwacje" />
             <TabItem Header="Inne">

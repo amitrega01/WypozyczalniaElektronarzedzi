@@ -45,6 +45,7 @@ namespace WypozyczalniaElektronarzedzi
                     ImieTB.Text = "";
                     NazwiskoTB.Text = "";
                     PESELTB.Text = "";
+                    
                 }
             }
         }

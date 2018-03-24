@@ -74,6 +74,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Klienci\WyswietlanieKlientow.xaml.cs">
+      <DependentUpon>WyswietlanieKlientow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wypozyczenia\WypozyczenieDodaj.xaml.cs">
+      <DependentUpon>WypozyczenieDodaj.xaml</DependentUpon>
+    </Compile>
     <Page Include="Klienci\DodawanieKlienta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,6 +132,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Produkty\ProduktySzukaj.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Klienci\WyswietlanieKlientow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wypozyczenia\WypozyczenieDodaj.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

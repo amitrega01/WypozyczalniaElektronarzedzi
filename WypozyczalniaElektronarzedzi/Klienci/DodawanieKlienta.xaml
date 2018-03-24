@@ -11,7 +11,7 @@
 
     <Grid Background="#fff">
 
-        <Label Content="Dodawanie pracownika" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
+        <Label Content="Nowy klient" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
                FontWeight="Bold" />
         <materialDesign:Card Margin="10,20,10,10" VerticalAlignment="Stretch">
             <Grid>
