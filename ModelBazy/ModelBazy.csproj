@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +49,83 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Kategorie.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Klienci.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelBazy.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelBazy.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelBazy.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelBazy.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelBazy.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="PelnyProdukt.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pracownicy.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Produkty.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProduktySz.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PunktyObslugi.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Rezerwacje.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RezerwacjeSz.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wypozyczenie.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WypozyczenieSz.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ModelBazy.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelBazy.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="ModelBazy.edmx.diagram">
+      <DependentUpon>ModelBazy.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelBazy.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelBazy.Context.cs</LastGenOutput>
+      <DependentUpon>ModelBazy.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModelBazy.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelBazy.edmx</DependentUpon>
+      <LastGenOutput>ModelBazy.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

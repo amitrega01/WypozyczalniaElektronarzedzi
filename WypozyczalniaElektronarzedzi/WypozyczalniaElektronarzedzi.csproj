@@ -169,6 +169,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ModelBazy\ModelBazy.csproj">
+      <Project>{fe782cda-5c03-4584-acb1-67c5c1469e6e}</Project>
+      <Name>ModelBazy</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UI\UI.csproj">
       <Project>{060d1d20-2503-4a75-a18b-bfbf73bd5975}</Project>
       <Name>UI</Name>
