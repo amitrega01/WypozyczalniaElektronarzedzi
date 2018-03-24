@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="WypozyczalniaElektronarzedzi.WypozyczenieDodaj"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WypozyczalniaElektronarzedzi"
+             mc:Ignorable="d" 
+             d:DesignHeight="635.792" d:DesignWidth="1395.046">
+    <Grid Background="#fff">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200*"/>
+
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+
+            <ColumnDefinition Width="200*"/>
+
+            <ColumnDefinition Width="200*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Nowe wypożyczenie" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="125"/>
+        <StackPanel Grid.Column="0" VerticalAlignment="Stretch">
+        <Label Grid.Column="0" Content="Dodaj produkty do wypożyczenia" Margin="10,41,10.2,0" VerticalAlignment="Top" Height="26"/>
+        <materialDesign:Card  Margin="10,10,10,10">
+                <ListBox Name="ProduktyLB" Height="154" HorizontalAlignment="Stretch"></ListBox>
+        </materialDesign:Card>
+        </StackPanel>
+    </Grid>
+</UserControl>
