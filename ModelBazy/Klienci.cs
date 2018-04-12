@@ -17,8 +17,8 @@ namespace ModelBazy
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Klienci()
         {
-            this.Rezerwacje = new HashSet<Rezerwacje>();
-            this.WypozyczenieSz = new HashSet<WypozyczenieSz>();
+            this.Rezerwacjes = new HashSet<Rezerwacje>();
+            this.Wypozyczenies = new HashSet<Wypozyczenie>();
         }
     
         public string PESEL { get; set; }
@@ -27,8 +27,8 @@ namespace ModelBazy
         public byte[] SkanDowodu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rezerwacje> Rezerwacje { get; set; }
+        public virtual ICollection<Rezerwacje> Rezerwacjes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WypozyczenieSz> WypozyczenieSz { get; set; }
+        public virtual ICollection<Wypozyczenie> Wypozyczenies { get; set; }
     }
 }

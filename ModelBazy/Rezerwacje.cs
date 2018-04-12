@@ -17,7 +17,7 @@ namespace ModelBazy
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Rezerwacje()
         {
-            this.RezerwacjeSz = new HashSet<RezerwacjeSz>();
+            this.RezerwacjeSzs = new HashSet<RezerwacjeSz>();
         }
     
         public int IDRezerwacji { get; set; }
@@ -27,6 +27,6 @@ namespace ModelBazy
     
         public virtual Klienci Klienci { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RezerwacjeSz> RezerwacjeSz { get; set; }
+        public virtual ICollection<RezerwacjeSz> RezerwacjeSzs { get; set; }
     }
 }

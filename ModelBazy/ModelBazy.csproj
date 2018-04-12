@@ -92,6 +92,12 @@
     <Compile Include="RezerwacjeSz.cs">
       <DependentUpon>ModelBazy.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Wypozyczenie.cs">
       <DependentUpon>ModelBazy.tt</DependentUpon>
     </Compile>

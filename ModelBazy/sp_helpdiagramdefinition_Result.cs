@@ -10,16 +10,10 @@
 namespace ModelBazy
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class PelnyProdukt
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int ID { get; set; }
-        public string Marka { get; set; }
-        public string Model { get; set; }
-        public decimal CenaZaDobe { get; set; }
-        public decimal Kaucja { get; set; }
-        public string Kategoria { get; set; }
-        public string Miasto { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

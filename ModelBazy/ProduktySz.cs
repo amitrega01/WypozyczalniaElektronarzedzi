@@ -17,8 +17,8 @@ namespace ModelBazy
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ProduktySz()
         {
-            this.RezerwacjeSz = new HashSet<RezerwacjeSz>();
-            this.WypozyczenieSz = new HashSet<WypozyczenieSz>();
+            this.RezerwacjeSzs = new HashSet<RezerwacjeSz>();
+            this.WypozyczenieSzs = new HashSet<WypozyczenieSz>();
         }
     
         public int IDProduktuSZ { get; set; }
@@ -29,8 +29,8 @@ namespace ModelBazy
         public virtual Produkty Produkty { get; set; }
         public virtual PunktyObslugi PunktyObslugi { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RezerwacjeSz> RezerwacjeSz { get; set; }
+        public virtual ICollection<RezerwacjeSz> RezerwacjeSzs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WypozyczenieSz> WypozyczenieSz { get; set; }
+        public virtual ICollection<WypozyczenieSz> WypozyczenieSzs { get; set; }
     }
 }

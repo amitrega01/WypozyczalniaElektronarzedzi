@@ -4,30 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="daa2dbebaaf947448d954d0b739a6462" Name="Diagram1">
-        <EntityTypeShape EntityType="WypozyczalniaModel.Kategorie" Width="1.5" PointX="1.5" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczalniaModel.Klienci" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczalniaModel.Pracownicy" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczalniaModel.Produkty" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczalniaModel.ProduktySz" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczalniaModel.PunktyObslugi" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczalniaModel.Rezerwacje" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczalniaModel.RezerwacjeSz" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczalniaModel.Wypozyczenie" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczalniaModel.WypozyczenieSz" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
-        <AssociationConnector Association="WypozyczalniaModel.FK__Produkty__Katego__32AB8735" ManuallyRouted="false" />
-        <AssociationConnector Association="WypozyczalniaModel.FK__Rezerwacj__IDKli__41EDCAC5" ManuallyRouted="false" />
-        <AssociationConnector Association="WypozyczalniaModel.FK__Wypozycze__IDKli__3D2915A8" ManuallyRouted="false" />
-        <AssociationConnector Association="WypozyczalniaModel.FK__Pracownic__IDPun__2DE6D218" ManuallyRouted="false" />
-        <AssociationConnector Association="WypozyczalniaModel.FK__Wypozycze__IDPra__3E1D39E1" ManuallyRouted="false" />
-        <AssociationConnector Association="WypozyczalniaModel.FK__Wypozycze__IDPra__3F115E1A" ManuallyRouted="false" />
-        <AssociationConnector Association="WypozyczalniaModel.FK__ProduktyS__IDPro__3587F3E0" ManuallyRouted="false" />
-        <AssociationConnector Association="WypozyczalniaModel.FK__ProduktyS__IDPun__367C1819" ManuallyRouted="false" />
-        <AssociationConnector Association="WypozyczalniaModel.FK__Rezerwacj__IDPro__45BE5BA9" ManuallyRouted="false" />
-        <AssociationConnector Association="WypozyczalniaModel.FK__Wypozycze__IDPro__3C34F16F" ManuallyRouted="false" />
-        <AssociationConnector Association="WypozyczalniaModel.FK__Rezerwacj__IDRez__44CA3770" ManuallyRouted="false" />
-        <AssociationConnector Association="WypozyczalniaModel.FK__Wypozycze__IDWyp__3B40CD36" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="WypozyczalniaModel.PelnyProdukt" Width="1.5" PointX="7.375" PointY="0.75" />
+      <Diagram DiagramId="daa2dbebaaf947448d954d0b739a6462" Name="Diagram1" ShowGrid="true" ZoomLevel="88">
+        <EntityTypeShape EntityType="WypozyczalniaModel.Kategorie" Width="1.5" PointX="1.5" PointY="12.375" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.Klienci" Width="1.5" PointX="0.75" PointY="15" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.Pracownicy" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.Produkty" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.ProduktySz" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.PunktyObslugi" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.Rezerwacje" Width="1.5" PointX="3" PointY="15" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.RezerwacjeSz" Width="1.5" PointX="5.25" PointY="4" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.Wypozyczenie" Width="1.5" PointX="5.25" PointY="11" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.WypozyczenieSz" Width="1.5" PointX="7.5" PointY="6.375" />
+        <EntityTypeShape EntityType="WypozyczalniaModel.PelnyProdukt" Width="1.5" PointX="7.75" PointY="9.375" />
+        <AssociationConnector Association="WypozyczalniaModel.FK__Produkty__Katego__656C112C" />
+        <AssociationConnector Association="WypozyczalniaModel.FK__Rezerwacj__IDKli__74AE54BC" />
+        <AssociationConnector Association="WypozyczalniaModel.Wypozyczenie_Klienci_PESEL_fk" />
+        <AssociationConnector Association="WypozyczalniaModel.FK__Pracownic__IDPun__60A75C0F" />
+        <AssociationConnector Association="WypozyczalniaModel.Wypozyczenie_Pracownicy_PESEL_fk" />
+        <AssociationConnector Association="WypozyczalniaModel.Wypozyczenie_Pracownicy_PESEL_fk_2" />
+        <AssociationConnector Association="WypozyczalniaModel.FK__ProduktyS__IDPro__68487DD7" />
+        <AssociationConnector Association="WypozyczalniaModel.FK__ProduktyS__IDPun__693CA210" />
+        <AssociationConnector Association="WypozyczalniaModel.FK__Rezerwacj__IDPro__787EE5A0" />
+        <AssociationConnector Association="WypozyczalniaModel.FK__Wypozycze__IDPro__6EF57B66" />
+        <AssociationConnector Association="WypozyczalniaModel.FK__Rezerwacj__IDRez__778AC167" />
+        <AssociationConnector Association="WypozyczalniaModel.FK__Wypozycze__IDWyp__6E01572D" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -17,7 +17,7 @@ namespace ModelBazy
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Produkty()
         {
-            this.ProduktySz = new HashSet<ProduktySz>();
+            this.ProduktySzs = new HashSet<ProduktySz>();
         }
     
         public int IDProduktu { get; set; }
@@ -29,6 +29,6 @@ namespace ModelBazy
     
         public virtual Kategorie Kategorie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProduktySz> ProduktySz { get; set; }
+        public virtual ICollection<ProduktySz> ProduktySzs { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,17 +22,35 @@ namespace WypozyczalniaElektronarzedzi
     /// </summary>
     public partial class WypozyczenieDodaj : UserControl
     {
+        private ObservableCollection<PelnyProdukt> produktyPodsum;
+        private ObservableCollection<PelnyProdukt> wszystkie;
+        private Decimal suma = 0;
+
+        //todo dodawanie wypozyczenia, wybieranie produktow itp przeniesc dodawanie wypozyczenia do nowego okna!!!!
+
+
         public WypozyczenieDodaj()
         {
             InitializeComponent();
             UpdateUI();
+
+            ProduktyLB.MouseDoubleClick += (sender, args) =>
+            {
+              
+                produktyPodsum.Add(ProduktyLB.SelectedItem as PelnyProdukt);
+                wszystkie.Remove(ProduktyLB.SelectedItem as PelnyProdukt);
+    
+            };
         }
+
         public void UpdateUI()
         {
+            produktyPodsum = new ObservableCollection<PelnyProdukt>();
+            PodsumowanieProdukty.ItemsSource = produktyPodsum;
             using (var context = new WypozyczalniaEntities())
             {
-                ProduktyLB.ItemsSource = context.PelnyProdukt.ToList();
-                
+                ProduktyLB.ItemsSource = wszystkie = new ObservableCollection<PelnyProdukt>(
+                    context.PelnyProdukt.ToList());
             }
         }
     }

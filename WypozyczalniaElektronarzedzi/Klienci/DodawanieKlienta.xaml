@@ -27,7 +27,7 @@
                 <TextBox x:Name="NazwiskoTB" Height="23" Margin="115,46,10,0" TextWrapping="Wrap"
                          Text="" VerticalAlignment="Top" />
                 <TextBox x:Name="PESELTB" Height="23" Margin="115,78,10,0" TextWrapping="Wrap"
-                         Text="" VerticalAlignment="Top" />
+                         Text="" VerticalAlignment="Top" MaxLength="11" />
                 <TextBox x:Name="ZdjecieTB" Height="23" Margin="115,110,10,0" TextWrapping="Wrap"
                          Text="" VerticalAlignment="Top" />
                 <Button x:Name="DodajBtn" Content="Dodaj" Margin="115,147,10,0" VerticalAlignment="Top"

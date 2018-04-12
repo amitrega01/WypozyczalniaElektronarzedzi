@@ -29,20 +29,10 @@ namespace WypozyczalniaElektronarzedzi
         {
             using (var context = new WypozyczalniaEntities())
             {
-                int a = 0;
-                try
-                {
-                    a = context.Kategorie.Select(x => x.IDKategorii).Max();
-                    a++;
-                }
-                catch (Exception exception)
-                {
-                    a = 1;
-                }
-
+                
                 Kategorie entity = new Kategorie
                 {
-                    IDKategorii = a,
+                    IDKategorii = context.Kategorie.Select(x=>x.IDKategorii).Max() +1,
                     Nazwa = NazwaTB.Text
                 };
                 context.Kategorie.Add(entity);

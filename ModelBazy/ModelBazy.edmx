@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="IDKategorii" />
           </Key>
-          <Property Name="IDKategorii" Type="int" Nullable="false" />
+          <Property Name="IDKategorii" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nazwa" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="Klienci">
@@ -36,7 +36,7 @@
           <Key>
             <PropertyRef Name="IDProduktu" />
           </Key>
-          <Property Name="IDProduktu" Type="int" Nullable="false" />
+          <Property Name="IDProduktu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Kategoria" Type="int" />
           <Property Name="Marka" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Model" Type="nvarchar" MaxLength="30" Nullable="false" />
@@ -47,7 +47,7 @@
           <Key>
             <PropertyRef Name="IDProduktuSZ" />
           </Key>
-          <Property Name="IDProduktuSZ" Type="int" Nullable="false" />
+          <Property Name="IDProduktuSZ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDProduktu" Type="int" />
           <Property Name="IDPunktuObslugi" Type="int" />
           <Property Name="Stantechniczny" Type="int" Nullable="false" />
@@ -56,7 +56,7 @@
           <Key>
             <PropertyRef Name="IDPunktuObslugi" />
           </Key>
-          <Property Name="IDPunktuObslugi" Type="int" Nullable="false" />
+          <Property Name="IDPunktuObslugi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Ulica" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="NrDomu" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Miasto" Type="nvarchar" MaxLength="30" Nullable="false" />
@@ -65,7 +65,7 @@
           <Key>
             <PropertyRef Name="IDRezerwacji" />
           </Key>
-          <Property Name="IDRezerwacji" Type="int" Nullable="false" />
+          <Property Name="IDRezerwacji" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDKlienta" Type="nvarchar" MaxLength="11" />
           <Property Name="DataRezerwacji" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="NaIleDni" Type="int" Nullable="false" />
@@ -74,7 +74,7 @@
           <Key>
             <PropertyRef Name="IDRezerwacjiSz" />
           </Key>
-          <Property Name="IDRezerwacjiSz" Type="int" Nullable="false" />
+          <Property Name="IDRezerwacjiSz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDRezerwacji" Type="int" />
           <Property Name="IDProduktuSZ" Type="int" />
         </EntityType>
@@ -82,21 +82,21 @@
           <Key>
             <PropertyRef Name="IDWypozyczenia" />
           </Key>
-          <Property Name="IDWypozyczenia" Type="int" Nullable="false" />
+          <Property Name="IDWypozyczenia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DataWypozyczenia" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="DataDoZwrotu" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="DataZwrotu" Type="datetime2" Precision="7" />
+          <Property Name="IDKlienta" Type="nvarchar" MaxLength="11" />
+          <Property Name="IDPracWydajacego" Type="nvarchar" MaxLength="11" />
+          <Property Name="IDPracOdbierajacego" Type="nvarchar" MaxLength="11" />
         </EntityType>
         <EntityType Name="WypozyczenieSz">
           <Key>
             <PropertyRef Name="IDWypozyczeniaSZ" />
           </Key>
-          <Property Name="IDWypozyczeniaSZ" Type="int" Nullable="false" />
+          <Property Name="IDWypozyczeniaSZ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDWypozyczenia" Type="int" />
           <Property Name="IDProduktuSz" Type="int" />
-          <Property Name="IDKlienta" Type="nvarchar" MaxLength="11" />
-          <Property Name="IDPracWydajacego" Type="nvarchar" MaxLength="11" />
-          <Property Name="IDPracOdbierajacego" Type="nvarchar" MaxLength="11" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -118,7 +118,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
           <Property Name="Kategoria" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Miasto" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Pracownic__IDPun__4D5F7D71">
+        <Association Name="FK__Pracownic__IDPun__60A75C0F">
           <End Role="PunktyObslugi" Type="Self.PunktyObslugi" Multiplicity="0..1" />
           <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="*" />
           <ReferentialConstraint>
@@ -130,7 +130,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Produkty__Katego__5224328E">
+        <Association Name="FK__Produkty__Katego__656C112C">
           <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="0..1" />
           <End Role="Produkty" Type="Self.Produkty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -142,7 +142,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProduktyS__IDPro__55009F39">
+        <Association Name="FK__ProduktyS__IDPro__68487DD7">
           <End Role="Produkty" Type="Self.Produkty" Multiplicity="0..1" />
           <End Role="ProduktySz" Type="Self.ProduktySz" Multiplicity="*" />
           <ReferentialConstraint>
@@ -154,7 +154,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProduktyS__IDPun__55F4C372">
+        <Association Name="FK__ProduktyS__IDPun__693CA210">
           <End Role="PunktyObslugi" Type="Self.PunktyObslugi" Multiplicity="0..1" />
           <End Role="ProduktySz" Type="Self.ProduktySz" Multiplicity="*" />
           <ReferentialConstraint>
@@ -166,7 +166,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rezerwacj__IDKli__6166761E">
+        <Association Name="FK__Rezerwacj__IDKli__74AE54BC">
           <End Role="Klienci" Type="Self.Klienci" Multiplicity="0..1" />
           <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="*" />
           <ReferentialConstraint>
@@ -178,7 +178,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rezerwacj__IDPro__65370702">
+        <Association Name="FK__Rezerwacj__IDPro__787EE5A0">
           <End Role="ProduktySz" Type="Self.ProduktySz" Multiplicity="0..1" />
           <End Role="RezerwacjeSz" Type="Self.RezerwacjeSz" Multiplicity="*" />
           <ReferentialConstraint>
@@ -190,7 +190,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rezerwacj__IDRez__6442E2C9">
+        <Association Name="FK__Rezerwacj__IDRez__778AC167">
           <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="0..1" />
           <End Role="RezerwacjeSz" Type="Self.RezerwacjeSz" Multiplicity="*" />
           <ReferentialConstraint>
@@ -202,43 +202,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wypozycze__IDKli__5CA1C101">
-          <End Role="Klienci" Type="Self.Klienci" Multiplicity="0..1" />
-          <End Role="WypozyczenieSz" Type="Self.WypozyczenieSz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Klienci">
-              <PropertyRef Name="PESEL" />
-            </Principal>
-            <Dependent Role="WypozyczenieSz">
-              <PropertyRef Name="IDKlienta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wypozycze__IDPra__5D95E53A">
-          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
-          <End Role="WypozyczenieSz" Type="Self.WypozyczenieSz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pracownicy">
-              <PropertyRef Name="PESEL" />
-            </Principal>
-            <Dependent Role="WypozyczenieSz">
-              <PropertyRef Name="IDPracWydajacego" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wypozycze__IDPra__5E8A0973">
-          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
-          <End Role="WypozyczenieSz" Type="Self.WypozyczenieSz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pracownicy">
-              <PropertyRef Name="PESEL" />
-            </Principal>
-            <Dependent Role="WypozyczenieSz">
-              <PropertyRef Name="IDPracOdbierajacego" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wypozycze__IDPro__5BAD9CC8">
+        <Association Name="FK__Wypozycze__IDPro__6EF57B66">
           <End Role="ProduktySz" Type="Self.ProduktySz" Multiplicity="0..1" />
           <End Role="WypozyczenieSz" Type="Self.WypozyczenieSz" Multiplicity="*" />
           <ReferentialConstraint>
@@ -250,7 +214,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wypozycze__IDWyp__5AB9788F">
+        <Association Name="FK__Wypozycze__IDWyp__6E01572D">
           <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="0..1" />
           <End Role="WypozyczenieSz" Type="Self.WypozyczenieSz" Multiplicity="*" />
           <ReferentialConstraint>
@@ -262,6 +226,81 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Wypozyczenie_Klienci_PESEL_fk">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="0..1" />
+          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="PESEL" />
+            </Principal>
+            <Dependent Role="Wypozyczenie">
+              <PropertyRef Name="IDKlienta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenie_Pracownicy_PESEL_fk">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="PESEL" />
+            </Principal>
+            <Dependent Role="Wypozyczenie">
+              <PropertyRef Name="IDPracOdbierajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenie_Pracownicy_PESEL_fk_2">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="PESEL" />
+            </Principal>
+            <Dependent Role="Wypozyczenie">
+              <PropertyRef Name="IDPracWydajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="KosztWypozyczenia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="ID_produktu" Type="int" Mode="In" />
+          <Parameter Name="ilDni" Type="int" Mode="In" />
+        </Function>
+        <Function Name="KosztWypozyczeniaKaucja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="ID_produktu" Type="int" Mode="In" />
+          <Parameter Name="ilDni" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="WypozyczalniaModelStoreContainer">
           <EntitySet Name="Kategorie" EntityType="Self.Kategorie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Klienci" EntityType="Self.Klienci" Schema="dbo" store:Type="Tables" />
@@ -284,381 +323,267 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
     [PelnyProdukt].[Miasto] AS [Miasto]
     FROM [dbo].[PelnyProdukt] AS [PelnyProdukt]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Pracownic__IDPun__4D5F7D71" Association="Self.FK__Pracownic__IDPun__4D5F7D71">
+          <AssociationSet Name="FK__Pracownic__IDPun__60A75C0F" Association="Self.FK__Pracownic__IDPun__60A75C0F">
             <End Role="PunktyObslugi" EntitySet="PunktyObslugi" />
             <End Role="Pracownicy" EntitySet="Pracownicy" />
           </AssociationSet>
-          <AssociationSet Name="FK__Produkty__Katego__5224328E" Association="Self.FK__Produkty__Katego__5224328E">
+          <AssociationSet Name="FK__Produkty__Katego__656C112C" Association="Self.FK__Produkty__Katego__656C112C">
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Produkty" EntitySet="Produkty" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProduktyS__IDPro__55009F39" Association="Self.FK__ProduktyS__IDPro__55009F39">
+          <AssociationSet Name="FK__ProduktyS__IDPro__68487DD7" Association="Self.FK__ProduktyS__IDPro__68487DD7">
             <End Role="Produkty" EntitySet="Produkty" />
             <End Role="ProduktySz" EntitySet="ProduktySz" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProduktyS__IDPun__55F4C372" Association="Self.FK__ProduktyS__IDPun__55F4C372">
+          <AssociationSet Name="FK__ProduktyS__IDPun__693CA210" Association="Self.FK__ProduktyS__IDPun__693CA210">
             <End Role="PunktyObslugi" EntitySet="PunktyObslugi" />
             <End Role="ProduktySz" EntitySet="ProduktySz" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rezerwacj__IDKli__6166761E" Association="Self.FK__Rezerwacj__IDKli__6166761E">
+          <AssociationSet Name="FK__Rezerwacj__IDKli__74AE54BC" Association="Self.FK__Rezerwacj__IDKli__74AE54BC">
             <End Role="Klienci" EntitySet="Klienci" />
             <End Role="Rezerwacje" EntitySet="Rezerwacje" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rezerwacj__IDPro__65370702" Association="Self.FK__Rezerwacj__IDPro__65370702">
+          <AssociationSet Name="FK__Rezerwacj__IDPro__787EE5A0" Association="Self.FK__Rezerwacj__IDPro__787EE5A0">
             <End Role="ProduktySz" EntitySet="ProduktySz" />
             <End Role="RezerwacjeSz" EntitySet="RezerwacjeSz" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rezerwacj__IDRez__6442E2C9" Association="Self.FK__Rezerwacj__IDRez__6442E2C9">
+          <AssociationSet Name="FK__Rezerwacj__IDRez__778AC167" Association="Self.FK__Rezerwacj__IDRez__778AC167">
             <End Role="Rezerwacje" EntitySet="Rezerwacje" />
             <End Role="RezerwacjeSz" EntitySet="RezerwacjeSz" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDKli__5CA1C101" Association="Self.FK__Wypozycze__IDKli__5CA1C101">
-            <End Role="Klienci" EntitySet="Klienci" />
-            <End Role="WypozyczenieSz" EntitySet="WypozyczenieSz" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDPra__5D95E53A" Association="Self.FK__Wypozycze__IDPra__5D95E53A">
-            <End Role="Pracownicy" EntitySet="Pracownicy" />
-            <End Role="WypozyczenieSz" EntitySet="WypozyczenieSz" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDPra__5E8A0973" Association="Self.FK__Wypozycze__IDPra__5E8A0973">
-            <End Role="Pracownicy" EntitySet="Pracownicy" />
-            <End Role="WypozyczenieSz" EntitySet="WypozyczenieSz" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDPro__5BAD9CC8" Association="Self.FK__Wypozycze__IDPro__5BAD9CC8">
+          <AssociationSet Name="FK__Wypozycze__IDPro__6EF57B66" Association="Self.FK__Wypozycze__IDPro__6EF57B66">
             <End Role="ProduktySz" EntitySet="ProduktySz" />
             <End Role="WypozyczenieSz" EntitySet="WypozyczenieSz" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDWyp__5AB9788F" Association="Self.FK__Wypozycze__IDWyp__5AB9788F">
+          <AssociationSet Name="FK__Wypozycze__IDWyp__6E01572D" Association="Self.FK__Wypozycze__IDWyp__6E01572D">
             <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
             <End Role="WypozyczenieSz" EntitySet="WypozyczenieSz" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenie_Klienci_PESEL_fk" Association="Self.Wypozyczenie_Klienci_PESEL_fk">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenie_Pracownicy_PESEL_fk" Association="Self.Wypozyczenie_Pracownicy_PESEL_fk">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenie_Pracownicy_PESEL_fk_2" Association="Self.Wypozyczenie_Pracownicy_PESEL_fk_2">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WypozyczalniaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WypozyczalniaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Kategorie" EntityType="WypozyczalniaModel.Kategorie" />
+          <EntitySet Name="Klienci" EntityType="WypozyczalniaModel.Klienci" />
+          <EntitySet Name="Pracownicy" EntityType="WypozyczalniaModel.Pracownicy" />
+          <EntitySet Name="Produkty" EntityType="WypozyczalniaModel.Produkty" />
+          <EntitySet Name="ProduktySz" EntityType="WypozyczalniaModel.ProduktySz" />
+          <EntitySet Name="PunktyObslugi" EntityType="WypozyczalniaModel.PunktyObslugi" />
+          <EntitySet Name="Rezerwacje" EntityType="WypozyczalniaModel.Rezerwacje" />
+          <EntitySet Name="RezerwacjeSz" EntityType="WypozyczalniaModel.RezerwacjeSz" />
+          <EntitySet Name="Wypozyczenie" EntityType="WypozyczalniaModel.Wypozyczenie" />
+          <EntitySet Name="WypozyczenieSz" EntityType="WypozyczalniaModel.WypozyczenieSz" />
+          <EntitySet Name="PelnyProdukt" EntityType="WypozyczalniaModel.PelnyProdukt" />
+          <AssociationSet Name="FK__Produkty__Katego__656C112C" Association="WypozyczalniaModel.FK__Produkty__Katego__656C112C">
+            <End Role="Kategorie" EntitySet="Kategorie" />
+            <End Role="Produkty" EntitySet="Produkty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rezerwacj__IDKli__74AE54BC" Association="WypozyczalniaModel.FK__Rezerwacj__IDKli__74AE54BC">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenie_Klienci_PESEL_fk" Association="WypozyczalniaModel.Wypozyczenie_Klienci_PESEL_fk">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pracownic__IDPun__60A75C0F" Association="WypozyczalniaModel.FK__Pracownic__IDPun__60A75C0F">
+            <End Role="PunktyObslugi" EntitySet="PunktyObslugi" />
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenie_Pracownicy_PESEL_fk" Association="WypozyczalniaModel.Wypozyczenie_Pracownicy_PESEL_fk">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenie_Pracownicy_PESEL_fk_2" Association="WypozyczalniaModel.Wypozyczenie_Pracownicy_PESEL_fk_2">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProduktyS__IDPro__68487DD7" Association="WypozyczalniaModel.FK__ProduktyS__IDPro__68487DD7">
+            <End Role="Produkty" EntitySet="Produkty" />
+            <End Role="ProduktySz" EntitySet="ProduktySz" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProduktyS__IDPun__693CA210" Association="WypozyczalniaModel.FK__ProduktyS__IDPun__693CA210">
+            <End Role="PunktyObslugi" EntitySet="PunktyObslugi" />
+            <End Role="ProduktySz" EntitySet="ProduktySz" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rezerwacj__IDPro__787EE5A0" Association="WypozyczalniaModel.FK__Rezerwacj__IDPro__787EE5A0">
+            <End Role="ProduktySz" EntitySet="ProduktySz" />
+            <End Role="RezerwacjeSz" EntitySet="RezerwacjeSz" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wypozycze__IDPro__6EF57B66" Association="WypozyczalniaModel.FK__Wypozycze__IDPro__6EF57B66">
+            <End Role="ProduktySz" EntitySet="ProduktySz" />
+            <End Role="WypozyczenieSz" EntitySet="WypozyczenieSz" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rezerwacj__IDRez__778AC167" Association="WypozyczalniaModel.FK__Rezerwacj__IDRez__778AC167">
+            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+            <End Role="RezerwacjeSz" EntitySet="RezerwacjeSz" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wypozycze__IDWyp__6E01572D" Association="WypozyczalniaModel.FK__Wypozycze__IDWyp__6E01572D">
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
+            <End Role="WypozyczenieSz" EntitySet="WypozyczenieSz" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(WypozyczalniaModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(WypozyczalniaModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
         <EntityType Name="Kategorie">
           <Key>
             <PropertyRef Name="IDKategorii" />
           </Key>
-          <Property Name="IDKategorii" Type="Int32" Nullable="false" />
-          <Property Name="Nazwa" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Produkty" Relationship="Self.FK__Produkty__Katego__32AB8735" FromRole="Kategorie" ToRole="Produkty" />
+          <Property Name="IDKategorii" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Produkties" Relationship="WypozyczalniaModel.FK__Produkty__Katego__656C112C" FromRole="Kategorie" ToRole="Produkty" />
         </EntityType>
         <EntityType Name="Klienci">
           <Key>
             <PropertyRef Name="PESEL" />
           </Key>
-          <Property Name="PESEL" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Imie" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Nazwisko" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PESEL" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Imie" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="SkanDowodu" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Rezerwacje" Relationship="Self.FK__Rezerwacj__IDKli__41EDCAC5" FromRole="Klienci" ToRole="Rezerwacje" />
-          <NavigationProperty Name="WypozyczenieSz" Relationship="Self.FK__Wypozycze__IDKli__3D2915A8" FromRole="Klienci" ToRole="WypozyczenieSz" />
+          <NavigationProperty Name="Rezerwacjes" Relationship="WypozyczalniaModel.FK__Rezerwacj__IDKli__74AE54BC" FromRole="Klienci" ToRole="Rezerwacje" />
+          <NavigationProperty Name="Wypozyczenies" Relationship="WypozyczalniaModel.Wypozyczenie_Klienci_PESEL_fk" FromRole="Klienci" ToRole="Wypozyczenie" />
         </EntityType>
         <EntityType Name="Pracownicy">
           <Key>
             <PropertyRef Name="PESEL" />
           </Key>
-          <Property Name="PESEL" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Imie" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Nazwisko" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PESEL" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Imie" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Haslo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="DataZatrudnienia" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="IDPunktuObslugi" Type="Int32" />
-          <NavigationProperty Name="PunktyObslugi" Relationship="Self.FK__Pracownic__IDPun__2DE6D218" FromRole="Pracownicy" ToRole="PunktyObslugi" />
-          <NavigationProperty Name="WypozyczenieSz" Relationship="Self.FK__Wypozycze__IDPra__3E1D39E1" FromRole="Pracownicy" ToRole="WypozyczenieSz" />
-          <NavigationProperty Name="WypozyczenieSz1" Relationship="Self.FK__Wypozycze__IDPra__3F115E1A" FromRole="Pracownicy" ToRole="WypozyczenieSz" />
-          <Property Name="Haslo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PunktyObslugi" Relationship="WypozyczalniaModel.FK__Pracownic__IDPun__60A75C0F" FromRole="Pracownicy" ToRole="PunktyObslugi" />
+          <NavigationProperty Name="Wypozyczenies" Relationship="WypozyczalniaModel.Wypozyczenie_Pracownicy_PESEL_fk" FromRole="Pracownicy" ToRole="Wypozyczenie" />
+          <NavigationProperty Name="Wypozyczenies1" Relationship="WypozyczalniaModel.Wypozyczenie_Pracownicy_PESEL_fk_2" FromRole="Pracownicy" ToRole="Wypozyczenie" />
         </EntityType>
         <EntityType Name="Produkty">
           <Key>
             <PropertyRef Name="IDProduktu" />
           </Key>
-          <Property Name="IDProduktu" Type="Int32" Nullable="false" />
+          <Property Name="IDProduktu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Kategoria" Type="Int32" />
-          <Property Name="Marka" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Model" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CenaZaDobe" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Kaucja" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <NavigationProperty Name="Kategorie" Relationship="Self.FK__Produkty__Katego__32AB8735" FromRole="Produkty" ToRole="Kategorie" />
-          <NavigationProperty Name="ProduktySz" Relationship="Self.FK__ProduktyS__IDPro__3587F3E0" FromRole="Produkty" ToRole="ProduktySz" />
+          <Property Name="Marka" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CenaZaDobe" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Kaucja" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Kategorie" Relationship="WypozyczalniaModel.FK__Produkty__Katego__656C112C" FromRole="Produkty" ToRole="Kategorie" />
+          <NavigationProperty Name="ProduktySzs" Relationship="WypozyczalniaModel.FK__ProduktyS__IDPro__68487DD7" FromRole="Produkty" ToRole="ProduktySz" />
         </EntityType>
         <EntityType Name="ProduktySz">
           <Key>
             <PropertyRef Name="IDProduktuSZ" />
           </Key>
-          <Property Name="IDProduktuSZ" Type="Int32" Nullable="false" />
+          <Property Name="IDProduktuSZ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDProduktu" Type="Int32" />
           <Property Name="IDPunktuObslugi" Type="Int32" />
           <Property Name="Stantechniczny" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Produkty" Relationship="Self.FK__ProduktyS__IDPro__3587F3E0" FromRole="ProduktySz" ToRole="Produkty" />
-          <NavigationProperty Name="PunktyObslugi" Relationship="Self.FK__ProduktyS__IDPun__367C1819" FromRole="ProduktySz" ToRole="PunktyObslugi" />
-          <NavigationProperty Name="RezerwacjeSz" Relationship="Self.FK__Rezerwacj__IDPro__45BE5BA9" FromRole="ProduktySz" ToRole="RezerwacjeSz" />
-          <NavigationProperty Name="WypozyczenieSz" Relationship="Self.FK__Wypozycze__IDPro__3C34F16F" FromRole="ProduktySz" ToRole="WypozyczenieSz" />
+          <NavigationProperty Name="Produkty" Relationship="WypozyczalniaModel.FK__ProduktyS__IDPro__68487DD7" FromRole="ProduktySz" ToRole="Produkty" />
+          <NavigationProperty Name="PunktyObslugi" Relationship="WypozyczalniaModel.FK__ProduktyS__IDPun__693CA210" FromRole="ProduktySz" ToRole="PunktyObslugi" />
+          <NavigationProperty Name="RezerwacjeSzs" Relationship="WypozyczalniaModel.FK__Rezerwacj__IDPro__787EE5A0" FromRole="ProduktySz" ToRole="RezerwacjeSz" />
+          <NavigationProperty Name="WypozyczenieSzs" Relationship="WypozyczalniaModel.FK__Wypozycze__IDPro__6EF57B66" FromRole="ProduktySz" ToRole="WypozyczenieSz" />
         </EntityType>
         <EntityType Name="PunktyObslugi">
           <Key>
             <PropertyRef Name="IDPunktuObslugi" />
           </Key>
-          <Property Name="IDPunktuObslugi" Type="Int32" Nullable="false" />
-          <Property Name="Ulica" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NrDomu" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Miasto" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Pracownicy" Relationship="Self.FK__Pracownic__IDPun__2DE6D218" FromRole="PunktyObslugi" ToRole="Pracownicy" />
-          <NavigationProperty Name="ProduktySz" Relationship="Self.FK__ProduktyS__IDPun__367C1819" FromRole="PunktyObslugi" ToRole="ProduktySz" />
+          <Property Name="IDPunktuObslugi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ulica" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="NrDomu" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Miasto" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pracownicies" Relationship="WypozyczalniaModel.FK__Pracownic__IDPun__60A75C0F" FromRole="PunktyObslugi" ToRole="Pracownicy" />
+          <NavigationProperty Name="ProduktySzs" Relationship="WypozyczalniaModel.FK__ProduktyS__IDPun__693CA210" FromRole="PunktyObslugi" ToRole="ProduktySz" />
         </EntityType>
         <EntityType Name="Rezerwacje">
           <Key>
             <PropertyRef Name="IDRezerwacji" />
           </Key>
-          <Property Name="IDRezerwacji" Type="Int32" Nullable="false" />
+          <Property Name="IDRezerwacji" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDKlienta" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="DataRezerwacji" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="NaIleDni" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Klienci" Relationship="Self.FK__Rezerwacj__IDKli__41EDCAC5" FromRole="Rezerwacje" ToRole="Klienci" />
-          <NavigationProperty Name="RezerwacjeSz" Relationship="Self.FK__Rezerwacj__IDRez__44CA3770" FromRole="Rezerwacje" ToRole="RezerwacjeSz" />
+          <NavigationProperty Name="Klienci" Relationship="WypozyczalniaModel.FK__Rezerwacj__IDKli__74AE54BC" FromRole="Rezerwacje" ToRole="Klienci" />
+          <NavigationProperty Name="RezerwacjeSzs" Relationship="WypozyczalniaModel.FK__Rezerwacj__IDRez__778AC167" FromRole="Rezerwacje" ToRole="RezerwacjeSz" />
         </EntityType>
         <EntityType Name="RezerwacjeSz">
           <Key>
             <PropertyRef Name="IDRezerwacjiSz" />
           </Key>
-          <Property Name="IDRezerwacjiSz" Type="Int32" Nullable="false" />
+          <Property Name="IDRezerwacjiSz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDRezerwacji" Type="Int32" />
           <Property Name="IDProduktuSZ" Type="Int32" />
-          <NavigationProperty Name="ProduktySz" Relationship="Self.FK__Rezerwacj__IDPro__45BE5BA9" FromRole="RezerwacjeSz" ToRole="ProduktySz" />
-          <NavigationProperty Name="Rezerwacje" Relationship="Self.FK__Rezerwacj__IDRez__44CA3770" FromRole="RezerwacjeSz" ToRole="Rezerwacje" />
+          <NavigationProperty Name="ProduktySz" Relationship="WypozyczalniaModel.FK__Rezerwacj__IDPro__787EE5A0" FromRole="RezerwacjeSz" ToRole="ProduktySz" />
+          <NavigationProperty Name="Rezerwacje" Relationship="WypozyczalniaModel.FK__Rezerwacj__IDRez__778AC167" FromRole="RezerwacjeSz" ToRole="Rezerwacje" />
         </EntityType>
         <EntityType Name="Wypozyczenie">
           <Key>
             <PropertyRef Name="IDWypozyczenia" />
           </Key>
-          <Property Name="IDWypozyczenia" Type="Int32" Nullable="false" />
+          <Property Name="IDWypozyczenia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DataWypozyczenia" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="DataDoZwrotu" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="DataZwrotu" Type="DateTime" Precision="7" />
-          <NavigationProperty Name="WypozyczenieSz" Relationship="Self.FK__Wypozycze__IDWyp__3B40CD36" FromRole="Wypozyczenie" ToRole="WypozyczenieSz" />
+          <Property Name="IDKlienta" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="IDPracWydajacego" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="IDPracOdbierajacego" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Klient" Relationship="WypozyczalniaModel.Wypozyczenie_Klienci_PESEL_fk" FromRole="Wypozyczenie" ToRole="Klienci" a:GetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <NavigationProperty Name="PracownikWydajacy" Relationship="WypozyczalniaModel.Wypozyczenie_Pracownicy_PESEL_fk" FromRole="Wypozyczenie" ToRole="Pracownicy" a:GetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <NavigationProperty Name="PracownikOdbierajacy" Relationship="WypozyczalniaModel.Wypozyczenie_Pracownicy_PESEL_fk_2" FromRole="Wypozyczenie" ToRole="Pracownicy" a:GetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <NavigationProperty Name="WypozyczenieSzs" Relationship="WypozyczalniaModel.FK__Wypozycze__IDWyp__6E01572D" FromRole="Wypozyczenie" ToRole="WypozyczenieSz" a:GetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
         </EntityType>
         <EntityType Name="WypozyczenieSz">
           <Key>
             <PropertyRef Name="IDWypozyczeniaSZ" />
           </Key>
-          <Property Name="IDWypozyczeniaSZ" Type="Int32" Nullable="false" />
+          <Property Name="IDWypozyczeniaSZ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDWypozyczenia" Type="Int32" />
           <Property Name="IDProduktuSz" Type="Int32" />
-          <Property Name="IDKlienta" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <Property Name="IDPracWydajacego" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <Property Name="IDPracOdbierajacego" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Klienci" Relationship="Self.FK__Wypozycze__IDKli__3D2915A8" FromRole="WypozyczenieSz" ToRole="Klienci" />
-          <NavigationProperty Name="Pracownicy" Relationship="Self.FK__Wypozycze__IDPra__3E1D39E1" FromRole="WypozyczenieSz" ToRole="Pracownicy" />
-          <NavigationProperty Name="Pracownicy1" Relationship="Self.FK__Wypozycze__IDPra__3F115E1A" FromRole="WypozyczenieSz" ToRole="Pracownicy" />
-          <NavigationProperty Name="ProduktySz" Relationship="Self.FK__Wypozycze__IDPro__3C34F16F" FromRole="WypozyczenieSz" ToRole="ProduktySz" />
-          <NavigationProperty Name="Wypozyczenie" Relationship="Self.FK__Wypozycze__IDWyp__3B40CD36" FromRole="WypozyczenieSz" ToRole="Wypozyczenie" />
+          <NavigationProperty Name="ProduktySz" Relationship="WypozyczalniaModel.FK__Wypozycze__IDPro__6EF57B66" FromRole="WypozyczenieSz" ToRole="ProduktySz" />
+          <NavigationProperty Name="Wypozyczenie" Relationship="WypozyczalniaModel.FK__Wypozycze__IDWyp__6E01572D" FromRole="WypozyczenieSz" ToRole="Wypozyczenie" />
         </EntityType>
-        <Association Name="FK__Produkty__Katego__32AB8735">
-          <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="0..1" />
-          <End Role="Produkty" Type="Self.Produkty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kategorie">
-              <PropertyRef Name="IDKategorii" />
-            </Principal>
-            <Dependent Role="Produkty">
-              <PropertyRef Name="Kategoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Rezerwacj__IDKli__41EDCAC5">
-          <End Role="Klienci" Type="Self.Klienci" Multiplicity="0..1" />
-          <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Klienci">
-              <PropertyRef Name="PESEL" />
-            </Principal>
-            <Dependent Role="Rezerwacje">
-              <PropertyRef Name="IDKlienta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wypozycze__IDKli__3D2915A8">
-          <End Role="Klienci" Type="Self.Klienci" Multiplicity="0..1" />
-          <End Role="WypozyczenieSz" Type="Self.WypozyczenieSz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Klienci">
-              <PropertyRef Name="PESEL" />
-            </Principal>
-            <Dependent Role="WypozyczenieSz">
-              <PropertyRef Name="IDKlienta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Pracownic__IDPun__2DE6D218">
-          <End Role="PunktyObslugi" Type="Self.PunktyObslugi" Multiplicity="0..1" />
-          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PunktyObslugi">
-              <PropertyRef Name="IDPunktuObslugi" />
-            </Principal>
-            <Dependent Role="Pracownicy">
-              <PropertyRef Name="IDPunktuObslugi" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wypozycze__IDPra__3E1D39E1">
-          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
-          <End Role="WypozyczenieSz" Type="Self.WypozyczenieSz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pracownicy">
-              <PropertyRef Name="PESEL" />
-            </Principal>
-            <Dependent Role="WypozyczenieSz">
-              <PropertyRef Name="IDPracWydajacego" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wypozycze__IDPra__3F115E1A">
-          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
-          <End Role="WypozyczenieSz" Type="Self.WypozyczenieSz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pracownicy">
-              <PropertyRef Name="PESEL" />
-            </Principal>
-            <Dependent Role="WypozyczenieSz">
-              <PropertyRef Name="IDPracOdbierajacego" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ProduktyS__IDPro__3587F3E0">
-          <End Role="Produkty" Type="Self.Produkty" Multiplicity="0..1" />
-          <End Role="ProduktySz" Type="Self.ProduktySz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Produkty">
-              <PropertyRef Name="IDProduktu" />
-            </Principal>
-            <Dependent Role="ProduktySz">
-              <PropertyRef Name="IDProduktu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ProduktyS__IDPun__367C1819">
-          <End Role="PunktyObslugi" Type="Self.PunktyObslugi" Multiplicity="0..1" />
-          <End Role="ProduktySz" Type="Self.ProduktySz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PunktyObslugi">
-              <PropertyRef Name="IDPunktuObslugi" />
-            </Principal>
-            <Dependent Role="ProduktySz">
-              <PropertyRef Name="IDPunktuObslugi" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Rezerwacj__IDPro__45BE5BA9">
-          <End Role="ProduktySz" Type="Self.ProduktySz" Multiplicity="0..1" />
-          <End Role="RezerwacjeSz" Type="Self.RezerwacjeSz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProduktySz">
-              <PropertyRef Name="IDProduktuSZ" />
-            </Principal>
-            <Dependent Role="RezerwacjeSz">
-              <PropertyRef Name="IDProduktuSZ" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wypozycze__IDPro__3C34F16F">
-          <End Role="ProduktySz" Type="Self.ProduktySz" Multiplicity="0..1" />
-          <End Role="WypozyczenieSz" Type="Self.WypozyczenieSz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProduktySz">
-              <PropertyRef Name="IDProduktuSZ" />
-            </Principal>
-            <Dependent Role="WypozyczenieSz">
-              <PropertyRef Name="IDProduktuSz" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Rezerwacj__IDRez__44CA3770">
-          <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="0..1" />
-          <End Role="RezerwacjeSz" Type="Self.RezerwacjeSz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rezerwacje">
-              <PropertyRef Name="IDRezerwacji" />
-            </Principal>
-            <Dependent Role="RezerwacjeSz">
-              <PropertyRef Name="IDRezerwacji" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wypozycze__IDWyp__3B40CD36">
-          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="0..1" />
-          <End Role="WypozyczenieSz" Type="Self.WypozyczenieSz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Wypozyczenie">
-              <PropertyRef Name="IDWypozyczenia" />
-            </Principal>
-            <Dependent Role="WypozyczenieSz">
-              <PropertyRef Name="IDWypozyczenia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="WypozyczalniaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Kategorie" EntityType="Self.Kategorie" />
-          <EntitySet Name="Klienci" EntityType="Self.Klienci" />
-          <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" />
-          <EntitySet Name="Produkty" EntityType="Self.Produkty" />
-          <EntitySet Name="ProduktySz" EntityType="Self.ProduktySz" />
-          <EntitySet Name="PunktyObslugi" EntityType="Self.PunktyObslugi" />
-          <EntitySet Name="Rezerwacje" EntityType="Self.Rezerwacje" />
-          <EntitySet Name="RezerwacjeSz" EntityType="Self.RezerwacjeSz" />
-          <EntitySet Name="Wypozyczenie" EntityType="Self.Wypozyczenie" />
-          <EntitySet Name="WypozyczenieSz" EntityType="Self.WypozyczenieSz" />
-          <AssociationSet Name="FK__Produkty__Katego__32AB8735" Association="Self.FK__Produkty__Katego__32AB8735">
-            <End Role="Kategorie" EntitySet="Kategorie" />
-            <End Role="Produkty" EntitySet="Produkty" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Rezerwacj__IDKli__41EDCAC5" Association="Self.FK__Rezerwacj__IDKli__41EDCAC5">
-            <End Role="Klienci" EntitySet="Klienci" />
-            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDKli__3D2915A8" Association="Self.FK__Wypozycze__IDKli__3D2915A8">
-            <End Role="Klienci" EntitySet="Klienci" />
-            <End Role="WypozyczenieSz" EntitySet="WypozyczenieSz" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Pracownic__IDPun__2DE6D218" Association="Self.FK__Pracownic__IDPun__2DE6D218">
-            <End Role="PunktyObslugi" EntitySet="PunktyObslugi" />
-            <End Role="Pracownicy" EntitySet="Pracownicy" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDPra__3E1D39E1" Association="Self.FK__Wypozycze__IDPra__3E1D39E1">
-            <End Role="Pracownicy" EntitySet="Pracownicy" />
-            <End Role="WypozyczenieSz" EntitySet="WypozyczenieSz" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDPra__3F115E1A" Association="Self.FK__Wypozycze__IDPra__3F115E1A">
-            <End Role="Pracownicy" EntitySet="Pracownicy" />
-            <End Role="WypozyczenieSz" EntitySet="WypozyczenieSz" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ProduktyS__IDPro__3587F3E0" Association="Self.FK__ProduktyS__IDPro__3587F3E0">
-            <End Role="Produkty" EntitySet="Produkty" />
-            <End Role="ProduktySz" EntitySet="ProduktySz" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ProduktyS__IDPun__367C1819" Association="Self.FK__ProduktyS__IDPun__367C1819">
-            <End Role="PunktyObslugi" EntitySet="PunktyObslugi" />
-            <End Role="ProduktySz" EntitySet="ProduktySz" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Rezerwacj__IDPro__45BE5BA9" Association="Self.FK__Rezerwacj__IDPro__45BE5BA9">
-            <End Role="ProduktySz" EntitySet="ProduktySz" />
-            <End Role="RezerwacjeSz" EntitySet="RezerwacjeSz" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDPro__3C34F16F" Association="Self.FK__Wypozycze__IDPro__3C34F16F">
-            <End Role="ProduktySz" EntitySet="ProduktySz" />
-            <End Role="WypozyczenieSz" EntitySet="WypozyczenieSz" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Rezerwacj__IDRez__44CA3770" Association="Self.FK__Rezerwacj__IDRez__44CA3770">
-            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
-            <End Role="RezerwacjeSz" EntitySet="RezerwacjeSz" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDWyp__3B40CD36" Association="Self.FK__Wypozycze__IDWyp__3B40CD36">
-            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
-            <End Role="WypozyczenieSz" EntitySet="WypozyczenieSz" />
-          </AssociationSet>
-          <EntitySet Name="PelnyProdukt" EntityType="WypozyczalniaModel.PelnyProdukt" />
-        </EntityContainer>
         <EntityType Name="PelnyProdukt">
           <Key>
             <PropertyRef Name="ID" />
@@ -677,7 +602,162 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
           <Property Name="Kategoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Miasto" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
-      </Schema>
+        <Association Name="FK__Produkty__Katego__656C112C">
+          <End Type="WypozyczalniaModel.Kategorie" Role="Kategorie" Multiplicity="0..1" />
+          <End Type="WypozyczalniaModel.Produkty" Role="Produkty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorie">
+              <PropertyRef Name="IDKategorii" />
+            </Principal>
+            <Dependent Role="Produkty">
+              <PropertyRef Name="Kategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rezerwacj__IDKli__74AE54BC">
+          <End Type="WypozyczalniaModel.Klienci" Role="Klienci" Multiplicity="0..1" />
+          <End Type="WypozyczalniaModel.Rezerwacje" Role="Rezerwacje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="PESEL" />
+            </Principal>
+            <Dependent Role="Rezerwacje">
+              <PropertyRef Name="IDKlienta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenie_Klienci_PESEL_fk">
+          <End Type="WypozyczalniaModel.Klienci" Role="Klienci" Multiplicity="0..1" />
+          <End Type="WypozyczalniaModel.Wypozyczenie" Role="Wypozyczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="PESEL" />
+            </Principal>
+            <Dependent Role="Wypozyczenie">
+              <PropertyRef Name="IDKlienta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pracownic__IDPun__60A75C0F">
+          <End Type="WypozyczalniaModel.PunktyObslugi" Role="PunktyObslugi" Multiplicity="0..1" />
+          <End Type="WypozyczalniaModel.Pracownicy" Role="Pracownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PunktyObslugi">
+              <PropertyRef Name="IDPunktuObslugi" />
+            </Principal>
+            <Dependent Role="Pracownicy">
+              <PropertyRef Name="IDPunktuObslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenie_Pracownicy_PESEL_fk">
+          <End Type="WypozyczalniaModel.Pracownicy" Role="Pracownicy" Multiplicity="0..1" />
+          <End Type="WypozyczalniaModel.Wypozyczenie" Role="Wypozyczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="PESEL" />
+            </Principal>
+            <Dependent Role="Wypozyczenie">
+              <PropertyRef Name="IDPracOdbierajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenie_Pracownicy_PESEL_fk_2">
+          <End Type="WypozyczalniaModel.Pracownicy" Role="Pracownicy" Multiplicity="0..1" />
+          <End Type="WypozyczalniaModel.Wypozyczenie" Role="Wypozyczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="PESEL" />
+            </Principal>
+            <Dependent Role="Wypozyczenie">
+              <PropertyRef Name="IDPracWydajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProduktyS__IDPro__68487DD7">
+          <End Type="WypozyczalniaModel.Produkty" Role="Produkty" Multiplicity="0..1" />
+          <End Type="WypozyczalniaModel.ProduktySz" Role="ProduktySz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produkty">
+              <PropertyRef Name="IDProduktu" />
+            </Principal>
+            <Dependent Role="ProduktySz">
+              <PropertyRef Name="IDProduktu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProduktyS__IDPun__693CA210">
+          <End Type="WypozyczalniaModel.PunktyObslugi" Role="PunktyObslugi" Multiplicity="0..1" />
+          <End Type="WypozyczalniaModel.ProduktySz" Role="ProduktySz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PunktyObslugi">
+              <PropertyRef Name="IDPunktuObslugi" />
+            </Principal>
+            <Dependent Role="ProduktySz">
+              <PropertyRef Name="IDPunktuObslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rezerwacj__IDPro__787EE5A0">
+          <End Type="WypozyczalniaModel.ProduktySz" Role="ProduktySz" Multiplicity="0..1" />
+          <End Type="WypozyczalniaModel.RezerwacjeSz" Role="RezerwacjeSz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProduktySz">
+              <PropertyRef Name="IDProduktuSZ" />
+            </Principal>
+            <Dependent Role="RezerwacjeSz">
+              <PropertyRef Name="IDProduktuSZ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wypozycze__IDPro__6EF57B66">
+          <End Type="WypozyczalniaModel.ProduktySz" Role="ProduktySz" Multiplicity="0..1" />
+          <End Type="WypozyczalniaModel.WypozyczenieSz" Role="WypozyczenieSz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProduktySz">
+              <PropertyRef Name="IDProduktuSZ" />
+            </Principal>
+            <Dependent Role="WypozyczenieSz">
+              <PropertyRef Name="IDProduktuSz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rezerwacj__IDRez__778AC167">
+          <End Type="WypozyczalniaModel.Rezerwacje" Role="Rezerwacje" Multiplicity="0..1" />
+          <End Type="WypozyczalniaModel.RezerwacjeSz" Role="RezerwacjeSz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezerwacje">
+              <PropertyRef Name="IDRezerwacji" />
+            </Principal>
+            <Dependent Role="RezerwacjeSz">
+              <PropertyRef Name="IDRezerwacji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wypozycze__IDWyp__6E01572D">
+          <End Type="WypozyczalniaModel.Wypozyczenie" Role="Wypozyczenie" Multiplicity="0..1" />
+          <End Type="WypozyczalniaModel.WypozyczenieSz" Role="WypozyczenieSz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wypozyczenie">
+              <PropertyRef Name="IDWypozyczenia" />
+            </Principal>
+            <Dependent Role="WypozyczenieSz">
+              <PropertyRef Name="IDWypozyczenia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -686,103 +766,103 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
           <EntitySetMapping Name="Kategorie">
             <EntityTypeMapping TypeName="WypozyczalniaModel.Kategorie">
               <MappingFragment StoreEntitySet="Kategorie">
-                <ScalarProperty Name="IDKategorii" ColumnName="IDKategorii" />
                 <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="IDKategorii" ColumnName="IDKategorii" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Klienci">
             <EntityTypeMapping TypeName="WypozyczalniaModel.Klienci">
               <MappingFragment StoreEntitySet="Klienci">
-                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
-                <ScalarProperty Name="Imie" ColumnName="Imie" />
-                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
                 <ScalarProperty Name="SkanDowodu" ColumnName="SkanDowodu" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Pracownicy">
             <EntityTypeMapping TypeName="WypozyczalniaModel.Pracownicy">
               <MappingFragment StoreEntitySet="Pracownicy">
-                <ScalarProperty Name="Haslo" ColumnName="Haslo" />
-                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
-                <ScalarProperty Name="Imie" ColumnName="Imie" />
-                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
-                <ScalarProperty Name="DataZatrudnienia" ColumnName="DataZatrudnienia" />
                 <ScalarProperty Name="IDPunktuObslugi" ColumnName="IDPunktuObslugi" />
+                <ScalarProperty Name="DataZatrudnienia" ColumnName="DataZatrudnienia" />
+                <ScalarProperty Name="Haslo" ColumnName="Haslo" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Produkty">
             <EntityTypeMapping TypeName="WypozyczalniaModel.Produkty">
               <MappingFragment StoreEntitySet="Produkty">
-                <ScalarProperty Name="IDProduktu" ColumnName="IDProduktu" />
-                <ScalarProperty Name="Kategoria" ColumnName="Kategoria" />
-                <ScalarProperty Name="Marka" ColumnName="Marka" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="CenaZaDobe" ColumnName="CenaZaDobe" />
                 <ScalarProperty Name="Kaucja" ColumnName="Kaucja" />
+                <ScalarProperty Name="CenaZaDobe" ColumnName="CenaZaDobe" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Kategoria" ColumnName="Kategoria" />
+                <ScalarProperty Name="IDProduktu" ColumnName="IDProduktu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProduktySz">
             <EntityTypeMapping TypeName="WypozyczalniaModel.ProduktySz">
               <MappingFragment StoreEntitySet="ProduktySz">
-                <ScalarProperty Name="IDProduktuSZ" ColumnName="IDProduktuSZ" />
-                <ScalarProperty Name="IDProduktu" ColumnName="IDProduktu" />
-                <ScalarProperty Name="IDPunktuObslugi" ColumnName="IDPunktuObslugi" />
                 <ScalarProperty Name="Stantechniczny" ColumnName="Stantechniczny" />
+                <ScalarProperty Name="IDPunktuObslugi" ColumnName="IDPunktuObslugi" />
+                <ScalarProperty Name="IDProduktu" ColumnName="IDProduktu" />
+                <ScalarProperty Name="IDProduktuSZ" ColumnName="IDProduktuSZ" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PunktyObslugi">
             <EntityTypeMapping TypeName="WypozyczalniaModel.PunktyObslugi">
               <MappingFragment StoreEntitySet="PunktyObslugi">
-                <ScalarProperty Name="IDPunktuObslugi" ColumnName="IDPunktuObslugi" />
-                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
-                <ScalarProperty Name="NrDomu" ColumnName="NrDomu" />
                 <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+                <ScalarProperty Name="NrDomu" ColumnName="NrDomu" />
+                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+                <ScalarProperty Name="IDPunktuObslugi" ColumnName="IDPunktuObslugi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rezerwacje">
             <EntityTypeMapping TypeName="WypozyczalniaModel.Rezerwacje">
               <MappingFragment StoreEntitySet="Rezerwacje">
-                <ScalarProperty Name="IDRezerwacji" ColumnName="IDRezerwacji" />
-                <ScalarProperty Name="IDKlienta" ColumnName="IDKlienta" />
-                <ScalarProperty Name="DataRezerwacji" ColumnName="DataRezerwacji" />
                 <ScalarProperty Name="NaIleDni" ColumnName="NaIleDni" />
+                <ScalarProperty Name="DataRezerwacji" ColumnName="DataRezerwacji" />
+                <ScalarProperty Name="IDKlienta" ColumnName="IDKlienta" />
+                <ScalarProperty Name="IDRezerwacji" ColumnName="IDRezerwacji" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RezerwacjeSz">
             <EntityTypeMapping TypeName="WypozyczalniaModel.RezerwacjeSz">
               <MappingFragment StoreEntitySet="RezerwacjeSz">
-                <ScalarProperty Name="IDRezerwacjiSz" ColumnName="IDRezerwacjiSz" />
-                <ScalarProperty Name="IDRezerwacji" ColumnName="IDRezerwacji" />
                 <ScalarProperty Name="IDProduktuSZ" ColumnName="IDProduktuSZ" />
+                <ScalarProperty Name="IDRezerwacji" ColumnName="IDRezerwacji" />
+                <ScalarProperty Name="IDRezerwacjiSz" ColumnName="IDRezerwacjiSz" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Wypozyczenie">
             <EntityTypeMapping TypeName="WypozyczalniaModel.Wypozyczenie">
               <MappingFragment StoreEntitySet="Wypozyczenie">
-                <ScalarProperty Name="IDWypozyczenia" ColumnName="IDWypozyczenia" />
-                <ScalarProperty Name="DataWypozyczenia" ColumnName="DataWypozyczenia" />
-                <ScalarProperty Name="DataDoZwrotu" ColumnName="DataDoZwrotu" />
+                <ScalarProperty Name="IDPracOdbierajacego" ColumnName="IDPracOdbierajacego" />
+                <ScalarProperty Name="IDPracWydajacego" ColumnName="IDPracWydajacego" />
+                <ScalarProperty Name="IDKlienta" ColumnName="IDKlienta" />
                 <ScalarProperty Name="DataZwrotu" ColumnName="DataZwrotu" />
+                <ScalarProperty Name="DataDoZwrotu" ColumnName="DataDoZwrotu" />
+                <ScalarProperty Name="DataWypozyczenia" ColumnName="DataWypozyczenia" />
+                <ScalarProperty Name="IDWypozyczenia" ColumnName="IDWypozyczenia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WypozyczenieSz">
             <EntityTypeMapping TypeName="WypozyczalniaModel.WypozyczenieSz">
               <MappingFragment StoreEntitySet="WypozyczenieSz">
-                <ScalarProperty Name="IDWypozyczeniaSZ" ColumnName="IDWypozyczeniaSZ" />
-                <ScalarProperty Name="IDWypozyczenia" ColumnName="IDWypozyczenia" />
                 <ScalarProperty Name="IDProduktuSz" ColumnName="IDProduktuSz" />
-                <ScalarProperty Name="IDKlienta" ColumnName="IDKlienta" />
-                <ScalarProperty Name="IDPracWydajacego" ColumnName="IDPracWydajacego" />
-                <ScalarProperty Name="IDPracOdbierajacego" ColumnName="IDPracOdbierajacego" />
+                <ScalarProperty Name="IDWypozyczenia" ColumnName="IDWypozyczenia" />
+                <ScalarProperty Name="IDWypozyczeniaSZ" ColumnName="IDWypozyczeniaSZ" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -799,6 +879,30 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="WypozyczalniaModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="WypozyczalniaModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="WypozyczalniaModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="WypozyczalniaModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WypozyczalniaModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="WypozyczalniaModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WypozyczalniaModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="WypozyczalniaModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="WypozyczalniaModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -813,7 +917,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

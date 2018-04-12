@@ -17,13 +17,7 @@ namespace ModelBazy
         public int IDWypozyczeniaSZ { get; set; }
         public Nullable<int> IDWypozyczenia { get; set; }
         public Nullable<int> IDProduktuSz { get; set; }
-        public string IDKlienta { get; set; }
-        public string IDPracWydajacego { get; set; }
-        public string IDPracOdbierajacego { get; set; }
     
-        public virtual Klienci Klienci { get; set; }
-        public virtual Pracownicy Pracownicy { get; set; }
-        public virtual Pracownicy Pracownicy1 { get; set; }
         public virtual ProduktySz ProduktySz { get; set; }
         public virtual Wypozyczenie Wypozyczenie { get; set; }
     }

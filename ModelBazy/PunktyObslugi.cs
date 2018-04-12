@@ -17,8 +17,8 @@ namespace ModelBazy
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PunktyObslugi()
         {
-            this.Pracownicy = new HashSet<Pracownicy>();
-            this.ProduktySz = new HashSet<ProduktySz>();
+            this.Pracownicies = new HashSet<Pracownicy>();
+            this.ProduktySzs = new HashSet<ProduktySz>();
         }
     
         public int IDPunktuObslugi { get; set; }
@@ -27,8 +27,8 @@ namespace ModelBazy
         public string Miasto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pracownicy> Pracownicy { get; set; }
+        public virtual ICollection<Pracownicy> Pracownicies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProduktySz> ProduktySz { get; set; }
+        public virtual ICollection<ProduktySz> ProduktySzs { get; set; }
     }
 }

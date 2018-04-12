@@ -29,6 +29,7 @@ namespace WypozyczalniaElektronarzedzi
         public Pracownicy pracownik { get; set; }
 
         public static MainWindow AppWindow;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -39,7 +40,6 @@ namespace WypozyczalniaElektronarzedzi
         {
             if (pracownik == null)
             {
-
                 LogIn logIn = new LogIn();
                 logIn.Show();
                 this.Close();
@@ -47,9 +47,10 @@ namespace WypozyczalniaElektronarzedzi
             else
             {
                 pracownik = null;
-                UpdateUI(); 
+                UpdateUI();
             }
         }
+
         public void UpdateUI()
         {
             if (pracownik != null)
@@ -65,8 +66,5 @@ namespace WypozyczalniaElektronarzedzi
                 LogInBtn.Content = "Zaloguj";
             }
         }
-
-
-       
     }
 }

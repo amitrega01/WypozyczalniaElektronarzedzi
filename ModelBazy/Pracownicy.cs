@@ -17,21 +17,21 @@ namespace ModelBazy
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pracownicy()
         {
-            this.WypozyczenieSz = new HashSet<WypozyczenieSz>();
-            this.WypozyczenieSz1 = new HashSet<WypozyczenieSz>();
+            this.Wypozyczenies = new HashSet<Wypozyczenie>();
+            this.Wypozyczenies1 = new HashSet<Wypozyczenie>();
         }
     
         public string PESEL { get; set; }
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
+        public string Haslo { get; set; }
         public System.DateTime DataZatrudnienia { get; set; }
         public Nullable<int> IDPunktuObslugi { get; set; }
-        public string Haslo { get; set; }
     
         public virtual PunktyObslugi PunktyObslugi { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WypozyczenieSz> WypozyczenieSz { get; set; }
+        public virtual ICollection<Wypozyczenie> Wypozyczenies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WypozyczenieSz> WypozyczenieSz1 { get; set; }
+        public virtual ICollection<Wypozyczenie> Wypozyczenies1 { get; set; }
     }
 }
