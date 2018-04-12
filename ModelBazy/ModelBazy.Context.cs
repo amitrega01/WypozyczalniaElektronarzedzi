@@ -38,6 +38,7 @@ namespace ModelBazy
         public virtual DbSet<Wypozyczenie> Wypozyczenie { get; set; }
         public virtual DbSet<WypozyczenieSz> WypozyczenieSz { get; set; }
         public virtual DbSet<PelnyProdukt> PelnyProdukt { get; set; }
+        public virtual DbSet<WypozyczenieView> WypozyczenieViews { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

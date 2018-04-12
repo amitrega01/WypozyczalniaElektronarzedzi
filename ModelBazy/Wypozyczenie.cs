@@ -28,10 +28,10 @@ namespace ModelBazy
         public string IDPracWydajacego { get; set; }
         public string IDPracOdbierajacego { get; set; }
     
-        public virtual Klienci Klient { private get; set; }
+        public virtual Klienci Klient { get; set; }
         public virtual Pracownicy PracownikWydajacy { private get; set; }
         public virtual Pracownicy PracownikOdbierajacy { private get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WypozyczenieSz> WypozyczenieSzs { private get; set; }
+        public virtual ICollection<WypozyczenieSz> WypozyczenieSzs { get; set; }
     }
 }

@@ -7,29 +7,22 @@ namespace UI
 {
     public class WypozyczeniaService
     {
-        public List<Wypozyczenie> listaWypozyczen { get; set; }
+        public List<WypozyczenieView> listaWypozyczen { get; set; }
 
         public WypozyczeniaService()
         {
             using (var context = new WypozyczalniaEntities())
             {
-                listaWypozyczen = context.Wypozyczenie.OrderBy(x => x.DataWypozyczenia).ToList();
+                listaWypozyczen = context.WypozyczenieViews.OrderBy(x => x.DataWypozyczenia).ToList();
             }
         }
 
-        public List<WypozyczenieDto> Lista()
+        public List<WypozyczenieView> Lista()
         {
             using (var context = new WypozyczalniaEntities())
             {
-                return
-                    context.Wypozyczenie
-                        .Join(context.WypozyczenieSz, wypozyczenie => wypozyczenie.IDWypozyczenia,
-                            sz => sz.IDWypozyczenia,
-                            (wypozyczenie, sz) => new WypozyczenieDto()
-                            {
-                                ID = wypozyczenie.IDWypozyczenia,
-                                DataWypozyczenia = wypozyczenie.DataWypozyczenia
-                            }).ToList();
+                return null;
+
             }
         }
     }

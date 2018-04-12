@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AutoMapper;
+using ModelBazy;
 using UI;
 
 namespace WypozyczalniaElektronarzedzi
@@ -23,11 +25,23 @@ namespace WypozyczalniaElektronarzedzi
     {
         public WypozyczeniaSzukaj()
         {
+            
             InitializeComponent();
-            WypozyczeniaService wypozyczenia = new WypozyczeniaService();
-            WypozyczeniaDG.ItemsSource = wypozyczenia.listaWypozyczen;
-         
-        }
+            Mapper.Initialize(cfg =>
+            {
+               
+                cfg.CreateMap<WypozyczenieView, WypozyczenieDto>();
 
+
+            });
+
+            WypozyczeniaService wypozyczenia = new WypozyczeniaService();
+            var lista = wypozyczenia.listaWypozyczen.Select(x => Mapper.Map<WypozyczenieDto>(x));
+           
+            WypozyczeniaDG.ItemsSource = lista;
+
+            WypozyczeniaDG.IsReadOnly = true;
+
+        }
     }
 }

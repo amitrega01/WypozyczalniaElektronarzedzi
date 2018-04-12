@@ -24,6 +24,8 @@ namespace WypozyczalniaElektronarzedzi
             {
                 klienciRes = context.Klienci.ToList();
             }
+
+          
             KlienciGrid.ItemsSource = klienciRes;
         }
 

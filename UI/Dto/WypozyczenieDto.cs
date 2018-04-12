@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Windows.Controls;
 using ModelBazy;
 
 namespace UI
 {
-    public class WypozyczenieDto
+    public class WypozyczenieDto :WypozyczenieView
     {
-        public int ID { get; set; }
-        public DateTime DataWypozyczenia { get; set; }
+        public CheckBox Zwrocono { get; set; } = new CheckBox();
     }
 }

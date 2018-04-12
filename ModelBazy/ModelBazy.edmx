@@ -118,6 +118,27 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
           <Property Name="Kategoria" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Miasto" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Wypozyczalnia.dbo.WypozyczenieView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="WypozyczenieView">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Klient" />
+            <PropertyRef Name="DataWypozyczenia" />
+            <PropertyRef Name="DataDoZwrotu" />
+            <PropertyRef Name="Narzędzie" />
+            <PropertyRef Name="PunktObslugi" />
+            <PropertyRef Name="Kaucja" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Klient" Type="nvarchar" MaxLength="61" Nullable="false" />
+          <Property Name="DataWypozyczenia" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DataDoZwrotu" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DataZwrotu" Type="datetime2" Precision="7" />
+          <Property Name="Narzędzie" Type="nvarchar" MaxLength="61" Nullable="false" />
+          <Property Name="PunktObslugi" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Kaucja" Type="money" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Pracownic__IDPun__60A75C0F">
           <End Role="PunktyObslugi" Type="Self.PunktyObslugi" Multiplicity="0..1" />
           <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="*" />
@@ -323,6 +344,18 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
     [PelnyProdukt].[Miasto] AS [Miasto]
     FROM [dbo].[PelnyProdukt] AS [PelnyProdukt]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="WypozyczenieView" EntityType="Self.WypozyczenieView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WypozyczenieView].[ID] AS [ID], 
+    [WypozyczenieView].[Klient] AS [Klient], 
+    [WypozyczenieView].[DataWypozyczenia] AS [DataWypozyczenia], 
+    [WypozyczenieView].[DataDoZwrotu] AS [DataDoZwrotu], 
+    [WypozyczenieView].[DataZwrotu] AS [DataZwrotu], 
+    [WypozyczenieView].[Narzędzie] AS [Narzędzie], 
+    [WypozyczenieView].[PunktObslugi] AS [PunktObslugi], 
+    [WypozyczenieView].[Kaucja] AS [Kaucja]
+    FROM [dbo].[WypozyczenieView] AS [WypozyczenieView]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Pracownic__IDPun__60A75C0F" Association="Self.FK__Pracownic__IDPun__60A75C0F">
             <End Role="PunktyObslugi" EntitySet="PunktyObslugi" />
             <End Role="Pracownicy" EntitySet="Pracownicy" />
@@ -466,6 +499,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="WypozyczenieViews" EntityType="WypozyczalniaModel.WypozyczenieView" />
         </EntityContainer>
         <EntityType Name="Kategorie">
           <Key>
@@ -569,10 +603,10 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
           <Property Name="IDKlienta" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="IDPracWydajacego" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="IDPracOdbierajacego" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Klient" Relationship="WypozyczalniaModel.Wypozyczenie_Klienci_PESEL_fk" FromRole="Wypozyczenie" ToRole="Klienci" a:GetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <NavigationProperty Name="Klient" Relationship="WypozyczalniaModel.Wypozyczenie_Klienci_PESEL_fk" FromRole="Wypozyczenie" ToRole="Klienci" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
           <NavigationProperty Name="PracownikWydajacy" Relationship="WypozyczalniaModel.Wypozyczenie_Pracownicy_PESEL_fk" FromRole="Wypozyczenie" ToRole="Pracownicy" a:GetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
           <NavigationProperty Name="PracownikOdbierajacy" Relationship="WypozyczalniaModel.Wypozyczenie_Pracownicy_PESEL_fk_2" FromRole="Wypozyczenie" ToRole="Pracownicy" a:GetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-          <NavigationProperty Name="WypozyczenieSzs" Relationship="WypozyczalniaModel.FK__Wypozycze__IDWyp__6E01572D" FromRole="Wypozyczenie" ToRole="WypozyczenieSz" a:GetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <NavigationProperty Name="WypozyczenieSzs" Relationship="WypozyczalniaModel.FK__Wypozycze__IDWyp__6E01572D" FromRole="Wypozyczenie" ToRole="WypozyczenieSz" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
         </EntityType>
         <EntityType Name="WypozyczenieSz">
           <Key>
@@ -757,6 +791,25 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="WypozyczenieView">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Klient" />
+            <PropertyRef Name="DataWypozyczenia" />
+            <PropertyRef Name="DataDoZwrotu" />
+            <PropertyRef Name="Narzędzie" />
+            <PropertyRef Name="PunktObslugi" />
+            <PropertyRef Name="Kaucja" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Klient" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="true" />
+          <Property Name="DataWypozyczenia" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DataDoZwrotu" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DataZwrotu" Type="DateTime" Precision="7" />
+          <Property Name="Narzędzie" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="true" />
+          <Property Name="PunktObslugi" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Kaucja" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -903,6 +956,20 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.PelnyProdukt' does not have a pr
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="WypozyczalniaModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="WypozyczalniaModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="WypozyczenieViews">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.WypozyczenieView">
+              <MappingFragment StoreEntitySet="WypozyczenieView">
+                <ScalarProperty Name="Kaucja" ColumnName="Kaucja" />
+                <ScalarProperty Name="PunktObslugi" ColumnName="PunktObslugi" />
+                <ScalarProperty Name="Narzędzie" ColumnName="Narzędzie" />
+                <ScalarProperty Name="DataZwrotu" ColumnName="DataZwrotu" />
+                <ScalarProperty Name="DataDoZwrotu" ColumnName="DataDoZwrotu" />
+                <ScalarProperty Name="DataWypozyczenia" ColumnName="DataWypozyczenia" />
+                <ScalarProperty Name="Klient" ColumnName="Klient" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -104,6 +104,9 @@
     <Compile Include="WypozyczenieSz.cs">
       <DependentUpon>ModelBazy.tt</DependentUpon>
     </Compile>
+    <Compile Include="WypozyczenieView.cs">
+      <DependentUpon>ModelBazy.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ModelBazy.edmx">

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AutoMapper;
 using ModelBazy;
+using UI;
 using WypozyczalniaElektronarzedzi.UI;
 
 namespace WypozyczalniaElektronarzedzi
@@ -33,6 +34,7 @@ namespace WypozyczalniaElektronarzedzi
         public MainWindow()
         {
             InitializeComponent();
+            
             AppWindow = this;
         }
 

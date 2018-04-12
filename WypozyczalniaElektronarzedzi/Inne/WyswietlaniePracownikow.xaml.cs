@@ -30,7 +30,7 @@ namespace WypozyczalniaElektronarzedzi
         {
             InitializeComponent();
             UserControlWP = this;
-            Mapper.Initialize(cfg => { cfg.CreateMap<Pracownicy, PracownicyDto>(); });
+           
             UpdateUI();
             PracownicyGrid.AutoGenerateColumns = true;
             this.Width = PracownicyGrid.RowHeaderActualWidth;
