@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ModelBazy;
+using UI;
 
 namespace WypozyczalniaElektronarzedzi
 {
@@ -22,31 +23,29 @@ namespace WypozyczalniaElektronarzedzi
     /// </summary>
     public partial class DodawanieKlienta : UserControl
     {
+        private KlienciService klienciS;
+
         public DodawanieKlienta()
         {
             InitializeComponent();
+            klienciS = new KlienciService();
         }
 
         private void DodajBtn_Click(object sender, RoutedEventArgs e)
         {
             if (ImieTB.Text != String.Empty && NazwiskoTB.Text != String.Empty && PESELTB.Text != null)
             {
-                using (var context = new WypozyczalniaEntities())
+                Klienci klienci = new Klienci
                 {
-                    Klienci klienci = new Klienci
-                    {
-                        Imie = ImieTB.Text,
-                        Nazwisko = NazwiskoTB.Text,
-                        PESEL = PESELTB.Text,
-                        SkanDowodu = null
-                    };
-                    context.Klienci.Add(klienci);
-                    context.SaveChanges();
-                    ImieTB.Text = "";
-                    NazwiskoTB.Text = "";
-                    PESELTB.Text = "";
-                    
-                }
+                    Imie = ImieTB.Text,
+                    Nazwisko = NazwiskoTB.Text,
+                    PESEL = PESELTB.Text,
+                    SkanDowodu = null
+                };
+                klienciS.AddEntity(klienci);
+                ImieTB.Text = "";
+                NazwiskoTB.Text = "";
+                PESELTB.Text = "";
             }
         }
     }

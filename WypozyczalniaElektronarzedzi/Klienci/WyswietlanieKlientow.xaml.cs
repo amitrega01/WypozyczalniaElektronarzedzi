@@ -4,29 +4,27 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using ModelBazy;
+using UI;
+
 namespace WypozyczalniaElektronarzedzi
-{   
+{
     public partial class WyswietlanieKlientow : UserControl
-    {   
-        List<Klienci> klienciRes;
+    {
+        private KlienciService klienci;
+
         public WyswietlanieKlientow()
         {
             InitializeComponent();
-            klienciRes = new List<Klienci>();
+            klienci = new KlienciService();
             UpdateUI();
         }
+
         /// <summary>
         /// Odswieża interfejs i pobiera dane z bazy na nowo
         /// </summary>
         public void UpdateUI()
         {
-            using (var context = new WypozyczalniaEntities()) 
-            {
-                klienciRes = context.Klienci.ToList();
-            }
-
-          
-            KlienciGrid.ItemsSource = klienciRes;
+            KlienciGrid.ItemsSource = klienci.Klienci;
         }
 
         private void OdwiezBtn_Click(object sender, RoutedEventArgs e)

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using ModelBazy;
+using UI;
 using WypozyczalniaElektronarzedzi;
 
 namespace WypozyczalniaElektronarzedzi
@@ -15,12 +16,9 @@ namespace WypozyczalniaElektronarzedzi
         public DodawaniePracownika()
         {
             InitializeComponent();
-            using (var context = new WypozyczalniaEntities())
-            {
-                var punktyObslugi = context.PunktyObslugi.ToList();
-                PunktObslugi.ItemsSource = punktyObslugi;
-                PunktObslugi.DisplayMemberPath = "Miasto";
-            }
+            PunktyObslugiService pkt = new PunktyObslugiService();
+            PunktObslugi.ItemsSource = pkt.PunktyObslugi;
+            PunktObslugi.DisplayMemberPath = "Miasto";
         }
 
 
@@ -32,14 +30,13 @@ namespace WypozyczalniaElektronarzedzi
                 Nazwisko = NazwiskoTextBox.Text,
                 PESEL = PESELTextBox.Text,
                 Haslo = HasloTextBox.Text,
-                IDPunktuObslugi= (PunktObslugi.SelectedItem as PunktyObslugi).IDPunktuObslugi,
+                IDPunktuObslugi = (PunktObslugi.SelectedItem as PunktyObslugi).IDPunktuObslugi,
                 DataZatrudnienia = DateTime.Now
             };
 
-            using (var context = new WypozyczalniaEntities())
+            using (var prac = new PracownicyService())
             {
-                context.Pracownicy.Add(pracownik);
-                context.SaveChanges();
+                prac.AddEntity(pracownik);
             }
 
             MainWindow.AppWindow.WyswietlaniePracownikowUC.UpdateUI();

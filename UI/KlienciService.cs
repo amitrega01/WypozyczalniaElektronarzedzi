@@ -1,28 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Documents;
 using ModelBazy;
 using UI.Interfaces;
 
 namespace UI
 {
-    public class WypozyczeniaService :IService
+    public class KlienciService : IService
     {
-        public List<WypozyczenieView> listaWypozyczen { get; set; }
+        public List<Klienci> Klienci { get; set; }
 
         private WypozyczalniaEntities context;
 
-        public WypozyczeniaService()
+        public KlienciService()
         {
             context = new WypozyczalniaEntities();
-
-            listaWypozyczen = context.WypozyczenieViews.OrderBy(x => x.DataWypozyczenia).ToList();
+            Klienci = context.Klienci.ToList();
         }
-
 
         public void AddEntity<T>(T entity)
         {
-            throw new System.NotImplementedException();
+            context.Klienci.Add(entity as Klienci);
+            context.SaveChanges();
         }
 
         public int GetMax()
@@ -35,4 +33,5 @@ namespace UI
             context?.Dispose();
         }
     }
+
 }

@@ -13,7 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
-using ModelBazy ;
+using ModelBazy;
+using UI;
 
 namespace WypozyczalniaElektronarzedzi
 {
@@ -24,19 +25,21 @@ namespace WypozyczalniaElektronarzedzi
     {
         private int[] stanTechniczny = {1, 2, 3, 4, 5};
 
+        private ProduktyService produkty;
+        private PunktyObslugiService punkty;
+        private KategorieService kategorie;
+
+
         public ProduktyDodaj()
         {
             InitializeComponent();
-
-
+            produkty = new ProduktyService();
+            punkty = new PunktyObslugiService();
+            kategorie = new KategorieService();
             MarkaCB.SelectionChanged += (sender, args) =>
             {
-                using (var context = new WypozyczalniaEntities())
-                {
-                    ModelCB.ItemsSource = context.Produkty.Where(x => x.Marka == MarkaCB.SelectedItem)
-                        .Select(y => y.Model)
-                        .Distinct().ToList();
-                }
+                ModelCB.ItemsSource = produkty.produktyList.Where(x => x.Marka == (MarkaCB.SelectedItem as string))
+                    .Select(x => x.Model).Distinct();
             };
 
             UpdateUI();
@@ -46,27 +49,21 @@ namespace WypozyczalniaElektronarzedzi
         private void UpdateUI()
 
         {
-               
-
-            using (var context = new WypozyczalniaEntities())
-            {
-                StanTechCB.ItemsSource = stanTechniczny;
-                PunktObslugiCB.ItemsSource = context.PunktyObslugi.ToList();
-                PunktObslugiCB.DisplayMemberPath = "Miasto";
-                KategoriaCB.ItemsSource = context.Kategorie.Select(x => x).ToList();
-                KategoriaCB.DisplayMemberPath = "Nazwa";
+            StanTechCB.ItemsSource = stanTechniczny;
+            PunktObslugiCB.ItemsSource = punkty.PunktyObslugi;
+            PunktObslugiCB.DisplayMemberPath = "Miasto";
+            KategoriaCB.ItemsSource = kategorie.Kategorie.Select(x => x);
+            KategoriaCB.DisplayMemberPath = "Nazwa";
 
 
-                MarkaCB.ItemsSource = context.Produkty.Select(x => x.Marka).Distinct().ToList();
-                ModelCB.ItemsSource = context.Produkty.Select(x => x.Model).Distinct().ToList();
-                StanTechCB2.ItemsSource = stanTechniczny;
-                PunktObslugiCB2.ItemsSource = context.PunktyObslugi.ToList();
+            MarkaCB.ItemsSource = produkty.produktyList.Select(x => x.Marka).Distinct().ToList();
+            ModelCB.ItemsSource = produkty.produktyList.Select(x => x.Model).Distinct().ToList();
+            StanTechCB2.ItemsSource = stanTechniczny;
+            PunktObslugiCB2.ItemsSource = punkty.PunktyObslugi.ToList();
 
 
-                PunktObslugiCB2.DisplayMemberPath = "Miasto";
+            PunktObslugiCB2.DisplayMemberPath = "Miasto";
 
-                // KategoriaCB.Items.Add(b);
-            }
 
             KategoriaCB.SelectedItem = null;
             StanTechCB.SelectedItem = null;
@@ -79,8 +76,6 @@ namespace WypozyczalniaElektronarzedzi
             MarkaTB.Text = String.Empty;
             CenaZaDobeTB.Text = String.Empty;
             Kaucja.Text = String.Empty;
-
-
         }
 
         private void DodajProduktBtn_Click(object sender, RoutedEventArgs e)
@@ -89,32 +84,32 @@ namespace WypozyczalniaElektronarzedzi
                 CenaZaDobeTB.Text != String.Empty && Kaucja.Text != String.Empty && StanTechCB.SelectedItem != null &&
                 PunktObslugiCB.SelectedItem != null)
             {
-                using (var context = new WypozyczalniaEntities())
+                Produkty entity = new Produkty
                 {
-                    Produkty entity = new Produkty
-                    {
-                        IDProduktu = context.Produkty.Select(x => x.IDProduktu).Max() + 1,
-                        Kategoria = ((Kategorie) KategoriaCB.SelectedItem).IDKategorii,
-                        Marka = MarkaTB.Text,
-                        Model = ModelTB.Text,
-                        CenaZaDobe = Convert.ToDecimal(CenaZaDobeTB.Text),
-                        Kaucja = Convert.ToDecimal(Kaucja.Text)
-                    };
-                    context.Produkty.Add(entity);
-                    ProduktySz entity2 = new ProduktySz
-                    {
-                        IDProduktu = entity.IDProduktu,
-                        IDProduktuSZ = context.ProduktySz.Select(x => x.IDProduktuSZ).Max() + 1,
-                        IDPunktuObslugi = ((PunktyObslugi) PunktObslugiCB.SelectedItem).IDPunktuObslugi,
-                        Stantechniczny = ((int) StanTechCB.SelectedItem)
-                    };
-                    context.ProduktySz.Add(entity2);
+                    IDProduktu = produkty.GetMax(),
+                    Kategoria = ((Kategorie) KategoriaCB.SelectedItem).IDKategorii,
+                    Marka = MarkaTB.Text,
+                    Model = ModelTB.Text,
+                    CenaZaDobe = Convert.ToDecimal(CenaZaDobeTB.Text),
+                    Kaucja = Convert.ToDecimal(Kaucja.Text)
+                };
+                ProduktySz entity2 = new ProduktySz
+                {
+                    IDProduktu = entity.IDProduktu,
+                    IDProduktuSZ = produkty.GetMaxSz(),
+                    IDPunktuObslugi = ((PunktyObslugi) PunktObslugiCB.SelectedItem).IDPunktuObslugi,
+                    Stantechniczny = ((int) StanTechCB.SelectedItem)
+                };
 
-                    context.SaveChanges();
-                    UpdateUI();
-                }
+                var tuple = new Tuple<Produkty, ProduktySz>(entity, entity2);
+
+                produkty.AddEntity(tuple);
+
+
+                UpdateUI();
             }
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -134,10 +129,10 @@ namespace WypozyczalniaElektronarzedzi
                         x.Marka == MarkaCB.SelectedItem && x.Model == ModelCB.SelectedItem);
                     ProduktySz entity = new ProduktySz
                     {
-                        IDProduktuSZ = context.ProduktySz.Select(x=>x.IDProduktuSZ).Max()+1,
+                        IDProduktuSZ = context.ProduktySz.Select(x => x.IDProduktuSZ).Max() + 1,
                         IDProduktu = matka.IDProduktu,
-                        IDPunktuObslugi= ((PunktyObslugi) PunktObslugiCB2.SelectedItem).IDPunktuObslugi,
-                        Stantechniczny= ((int) StanTechCB2.SelectedItem)
+                        IDPunktuObslugi = ((PunktyObslugi) PunktObslugiCB2.SelectedItem).IDPunktuObslugi,
+                        Stantechniczny = ((int) StanTechCB2.SelectedItem)
                     };
                     context.ProduktySz.Add(entity);
                     context.SaveChanges();

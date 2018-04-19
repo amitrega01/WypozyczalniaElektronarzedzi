@@ -69,7 +69,12 @@
     <Compile Include="Dto\PracownicyDto.cs" />
     <Compile Include="Dto\ProduktyDto.cs" />
     <Compile Include="Dto\WypozyczenieDto.cs" />
+    <Compile Include="Interfaces\IService.cs" />
+    <Compile Include="KategorieService.cs" />
+    <Compile Include="KlienciService.cs" />
     <Compile Include="KosztWypozyczeniaProduktu.cs" />
+    <Compile Include="PracownicyService.cs" />
+    <Compile Include="ProduktyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -83,6 +88,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PunktyObslugiService.cs" />
     <Compile Include="WypozyczeniaService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
