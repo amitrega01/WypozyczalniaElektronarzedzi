@@ -22,10 +22,6 @@ namespace ModelBazy
         public string Narzędzie { get; set; }
         public string PunktObslugi { get; set; }
         public decimal Kaucja { get; set; }
-
-        public override string ToString()
-        {
-            return Klient;
-        }
+        public Nullable<decimal> Cena { get; set; }
     }
 }

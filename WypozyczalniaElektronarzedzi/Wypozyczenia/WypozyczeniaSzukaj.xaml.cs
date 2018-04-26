@@ -23,6 +23,7 @@ namespace WypozyczalniaElektronarzedzi
     /// </summary>
     public partial class WypozyczeniaSzukaj : UserControl
     {
+        private WypozyczeniaService wypozyczenia;
         public WypozyczeniaSzukaj()
         {
             
@@ -34,14 +35,30 @@ namespace WypozyczalniaElektronarzedzi
 
 
             });
-
-            WypozyczeniaService wypozyczenia = new WypozyczeniaService();
-            var lista = wypozyczenia.listaWypozyczen.Select(x => Mapper.Map<WypozyczenieDto>(x));
-           
-            WypozyczeniaDG.ItemsSource = lista;
+            wypozyczenia =  new WypozyczeniaService(); 
+            
+            
+            WypozyczeniaDG.ItemsSource = wypozyczenia.listaWypozyczen;
 
             WypozyczeniaDG.IsReadOnly = true;
 
+            WypozyczeniaDG.MouseDoubleClick += (sender, args) =>
+            {
+               
+                wypozyczenia.Zwrocenie(
+                    ((sender as DataGrid).SelectedItem as WypozyczenieView).ID);
+
+            };
+
+          
+
+
+
+        }
+
+        private void NieZwroconeChip_Click(object sender, RoutedEventArgs e)
+        {
+            WypozyczeniaDG.ItemsSource = wypozyczenia.listaWypozyczen.Where(x => x.DataZwrotu == null);
         }
     }
 }

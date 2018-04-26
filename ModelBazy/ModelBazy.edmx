@@ -138,6 +138,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.WypozyczenieView' does not have 
           <Property Name="Narzędzie" Type="nvarchar" MaxLength="61" Nullable="false" />
           <Property Name="PunktObslugi" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Kaucja" Type="money" Nullable="false" />
+          <Property Name="Cena" Type="money" />
         </EntityType>
         <Association Name="FK__Pracownic__IDPun__60A75C0F">
           <End Role="PunktyObslugi" Type="Self.PunktyObslugi" Multiplicity="0..1" />
@@ -353,7 +354,8 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.WypozyczenieView' does not have 
     [WypozyczenieView].[DataZwrotu] AS [DataZwrotu], 
     [WypozyczenieView].[Narzędzie] AS [Narzędzie], 
     [WypozyczenieView].[PunktObslugi] AS [PunktObslugi], 
-    [WypozyczenieView].[Kaucja] AS [Kaucja]
+    [WypozyczenieView].[Kaucja] AS [Kaucja], 
+    [WypozyczenieView].[Cena] AS [Cena]
     FROM [dbo].[WypozyczenieView] AS [WypozyczenieView]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__Pracownic__IDPun__60A75C0F" Association="Self.FK__Pracownic__IDPun__60A75C0F">
@@ -809,6 +811,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.WypozyczenieView' does not have 
           <Property Name="Narzędzie" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="true" />
           <Property Name="PunktObslugi" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Kaucja" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Cena" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -959,6 +962,7 @@ warning 6002: The table/view 'Wypozyczalnia.dbo.WypozyczenieView' does not have 
           <EntitySetMapping Name="WypozyczenieViews">
             <EntityTypeMapping TypeName="WypozyczalniaModel.WypozyczenieView">
               <MappingFragment StoreEntitySet="WypozyczenieView">
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
                 <ScalarProperty Name="Kaucja" ColumnName="Kaucja" />
                 <ScalarProperty Name="PunktObslugi" ColumnName="PunktObslugi" />
                 <ScalarProperty Name="Narzędzie" ColumnName="Narzędzie" />
