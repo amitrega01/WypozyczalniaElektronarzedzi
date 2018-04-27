@@ -24,7 +24,7 @@ namespace WypozyczalniaElektronarzedzi
     public partial class WypozyczeniaSzukaj : UserControl
     {
         private WypozyczeniaService wypozyczenia;
-        public WypozyczeniaSzukaj()
+    public WypozyczeniaSzukaj()
         {
             
             InitializeComponent();
@@ -35,12 +35,10 @@ namespace WypozyczalniaElektronarzedzi
 
 
             });
-            wypozyczenia =  new WypozyczeniaService(); 
-            
-            
-            WypozyczeniaDG.ItemsSource = wypozyczenia.listaWypozyczen;
+            wypozyczenia =  new WypozyczeniaService();
 
-            WypozyczeniaDG.IsReadOnly = true;
+
+            DataContext = wypozyczenia.listaWypozyczen;
 
             WypozyczeniaDG.MouseDoubleClick += (sender, args) =>
             {
