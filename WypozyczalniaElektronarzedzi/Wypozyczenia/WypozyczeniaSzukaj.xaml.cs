@@ -28,13 +28,7 @@ namespace WypozyczalniaElektronarzedzi
         {
             
             InitializeComponent();
-            Mapper.Initialize(cfg =>
-            {
-               
-                cfg.CreateMap<WypozyczenieView, WypozyczenieDto>();
-
-
-            });
+          
             wypozyczenia =  new WypozyczeniaService();
 
 

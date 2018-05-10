@@ -53,7 +53,7 @@ namespace UI
         {
             var temp = context.Wypozyczenie.Find(id);
             context.SaveChanges();
-            listaWypozyczen = new ObservableCollection<WypozyczenieView>(context.WypozyczenieViews.ToList());
+            listaWypozyczen = new ObservableCollection<WypozyczenieView>(context.WypozyczenieViews.ToList());   
 
         }
 

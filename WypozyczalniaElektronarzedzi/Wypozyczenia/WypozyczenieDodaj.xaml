@@ -10,26 +10,31 @@
              d:DesignHeight="635.792" d:DesignWidth="1395.046">
     <Grid Background="#fff">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+            <ColumnDefinition Width="173*" />
 
-            <ColumnDefinition />
-            <ColumnDefinition Width="Auto" />
-
-            <ColumnDefinition />
+            <ColumnDefinition Width="106*" />
         </Grid.ColumnDefinitions>
 
         <Label Content="Nowe wypożyczenie" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
                FontWeight="Bold" Height="26" Width="125" />
-        <StackPanel Grid.Column="0" VerticalAlignment="Stretch" Margin="0,0,2.4,0">
-            <Label Grid.Column="0" Content="Dodaj produkty do wypożyczenia" Margin="10,41,10.2,0"
-                   VerticalAlignment="Top" Height="26" />
-            <materialDesign:Card Margin="10,10,10,10">
-                <ListBox Name="ProduktyLB" Height="154" HorizontalAlignment="Stretch" Margin="0,0,-9.8,0" />
-            </materialDesign:Card>
+        <ScrollViewer>
+            <StackPanel Grid.Column="0" VerticalAlignment="Stretch" Margin="10,10,11.8,10">
+                <Label Grid.Column="0" Content="Dodaj produkty do wypożyczenia" Margin="10,41,10.2,0"
+                       VerticalAlignment="Top" Height="26" />
+                <local:ProduktySzukaj x:Name="ProduktySzukaj" />
+                <local:WyswietlanieKlientow x:Name="KlienciSzukaj" />
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Column="1">
+            <Label Content="Podsumowanie" HorizontalAlignment="Left" Margin="8.2,10,0,0"
+                   VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="96" />
+            <DataGrid x:Name="PodsumowanieProdukty" ItemsSource="{Binding Path=produkty}" Margin="10,10,10,10"
+                      VerticalAlignment="Stretch" />
+            <Label Content="Klient" FontWeight="Bold" />
+            <DataGrid ItemsSource="{Binding Path=klien}" Margin="10,10,10,10" />
+            <Label Content="Koszt" FontWeight="Bold" />
+            <Label Content="{Binding Path=zaDzien}" x:Name="ZaDzien" ></Label>
+            <Label Content="{Binding Path=kaucja}"  x:Name="Kaucja"></Label>
         </StackPanel>
-        <Label Content="Podsumowanie" Grid.Column="3" HorizontalAlignment="Left" Margin="9.6,10,0,0"
-               VerticalAlignment="Top" FontWeight="Bold" />
-        <ListView Grid.Column="3" x:Name="PodsumowanieProdukty" Margin="9.6,36,10.2,468" VerticalAlignment="Stretch" />
-
     </Grid>
 </UserControl>

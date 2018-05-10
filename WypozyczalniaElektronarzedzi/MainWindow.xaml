@@ -41,13 +41,19 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Wypożyczenia">
-                <Grid Background="#FFF" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="814*"/>
-                        <ColumnDefinition Width="301*"/>
-                    </Grid.ColumnDefinitions>
-                    <local:WypozyczeniaSzukaj Grid.Column="0"/>
-                </Grid>
+                <TabControl >
+                    <TabItem Header="Szukaj">
+                        <Grid Background="#FFF" >
+                            <local:WypozyczeniaSzukaj Grid.Column="0"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Dodaj">
+                        <Grid>
+                            <local:WypozyczenieDodaj></local:WypozyczenieDodaj>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+                
             </TabItem>
             <TabItem Header="Rezerwacje" />
             <TabItem Header="Inne">

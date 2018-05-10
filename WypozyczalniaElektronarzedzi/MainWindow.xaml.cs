@@ -68,5 +68,10 @@ namespace WypozyczalniaElektronarzedzi
                 LogInBtn.Content = "Zaloguj";
             }
         }
+
+        private void WypozyczenieDodaj_Loaded()
+        {
+
+        }
     }
 }
