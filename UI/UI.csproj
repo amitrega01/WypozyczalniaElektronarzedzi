@@ -90,6 +90,7 @@
     </Compile>
     <Compile Include="PunktyObslugiService.cs" />
     <Compile Include="WypozyczeniaService.cs" />
+    <Compile Include="WypozyczeniEntity.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

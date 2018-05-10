@@ -9,7 +9,7 @@ using UI.Interfaces;
 
 namespace UI
 {
-    public class WypozyczeniaService :IService
+    public class WypozyczeniaService : IService
     {
         public ObservableCollection<WypozyczenieView> listaWypozyczen { get; set; }
 
@@ -23,9 +23,35 @@ namespace UI
         }
 
 
-        public void AddEntity<T>(T entity)
+        public void AddEntity<T>(T entity1)
         {
-            throw new System.NotImplementedException();
+            var entity = entity1 as WypozyczenieEnitity;
+            List<WypozyczenieSz> tempList = new List<WypozyczenieSz>();
+
+            Wypozyczenie temp = new Wypozyczenie
+            {
+                IDWypozyczenia = context.Wypozyczenie.Select(x => x.IDWypozyczenia).Max() + 1,
+                DataDoZwrotu = entity.dataDoZwrotu,
+                DataWypozyczenia = DateTime.Now,
+                IDPracWydajacego = entity.IDPrac,
+                IDKlienta = entity.klient.PESEL
+            };
+            foreach (var p in entity.produkty)
+            {
+                tempList.Add(new WypozyczenieSz
+                {
+                    IDWypozyczenia = temp.IDWypozyczenia,
+                    IDProduktuSz = p.ID
+                });
+            }
+
+            context.Wypozyczenie.Add(temp);
+            foreach (var wypozyczenieSz in tempList)
+            {
+                context.WypozyczenieSz.Add(wypozyczenieSz);
+            }
+
+            context.SaveChanges();
         }
 
         public int GetMax()
@@ -35,7 +61,6 @@ namespace UI
 
         public void DeleteEntity(int id)
         {
-
             var entity = context.Wypozyczenie.Single(x => x.IDWypozyczenia == id);
             var szczegolowe = context.WypozyczenieSz.Where(x => x.IDWypozyczenia == entity.IDWypozyczenia).ToList();
 
@@ -53,15 +78,14 @@ namespace UI
         {
             var temp = context.Wypozyczenie.Find(id);
             context.SaveChanges();
-            listaWypozyczen = new ObservableCollection<WypozyczenieView>(context.WypozyczenieViews.ToList());   
-
+            listaWypozyczen = new ObservableCollection<WypozyczenieView>(context.WypozyczenieViews.ToList());
         }
 
         public void Refresh()
         {
             listaWypozyczen =
                 new ObservableCollection<WypozyczenieView>(context.WypozyczenieViews.OrderBy(x => x.DataWypozyczenia)
-                    );
+                );
         }
 
         public void Dispose()

@@ -24,28 +24,30 @@ namespace WypozyczalniaElektronarzedzi
     public partial class WypozyczeniaSzukaj : UserControl
     {
         private WypozyczeniaService wypozyczenia;
-    public WypozyczeniaSzukaj()
+        public static WypozyczeniaSzukaj UC;
+        public WypozyczeniaSzukaj()
         {
-            
             InitializeComponent();
-          
-            wypozyczenia =  new WypozyczeniaService();
+            UC = this;
+            wypozyczenia = new WypozyczeniaService();
 
 
             DataContext = wypozyczenia.listaWypozyczen;
 
             WypozyczeniaDG.MouseDoubleClick += (sender, args) =>
             {
-               
                 wypozyczenia.Zwrocenie(
                     ((sender as DataGrid).SelectedItem as WypozyczenieView).ID);
-
             };
 
-          
 
+            Refresh.Click += (sender, args) => { UpdateUI(); };
+        }
 
-
+        public void UpdateUI()
+        {
+            wypozyczenia.Refresh();
+            DataContext = wypozyczenia.listaWypozyczen;
         }
 
         private void NieZwroconeChip_Click(object sender, RoutedEventArgs e)

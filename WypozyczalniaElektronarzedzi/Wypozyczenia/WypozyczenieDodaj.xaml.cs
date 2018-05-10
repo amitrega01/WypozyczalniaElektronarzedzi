@@ -14,37 +14,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ModelBazy;
+using UI;
 
 namespace WypozyczalniaElektronarzedzi
 {
-    class WypozyczenieEnitity
-    {
-        public Wypozyczenie _wypozyczenie { get; set; }
-        public ObservableCollection<PelnyProdukt> produkty { get; set; }
-        public ObservableCollection<Klienci> klien { get; set; }
-        public decimal zaDzien { get; set; }
-        public decimal kaucja { get; set; }
-        public string text { get; set; } = "Asdasd";
-
-        public WypozyczenieEnitity()
-        {
-            _wypozyczenie = new Wypozyczenie();
-            produkty = new ObservableCollection<PelnyProdukt>();
-            klien = new ObservableCollection<Klienci>();
-        }
-
-        public void UpdateCeny()
-        {
-            zaDzien = 0;
-            kaucja = 0;
-            foreach (var p in produkty)
-            {
-                zaDzien += p.CenaZaDobe;
-                kaucja += p.Kaucja;
-            }
-        }
-    }
-
     /// <summary>
     /// Logika interakcji dla klasy WypozyczenieDodaj.xaml
     /// </summary>
@@ -57,13 +30,14 @@ namespace WypozyczalniaElektronarzedzi
         private List<PelnyProdukt> wszystkie;
         private Decimal suma = 0;
 
+        private WypozyczenieEnitity temp;
         //todo dodawanie wypozyczenia, wybieranie produktow itp przeniesc dodawanie wypozyczenia do nowego okna!!!!
 
 
         public WypozyczenieDodaj()
         {
             InitializeComponent();
-            WypozyczenieEnitity temp = new WypozyczenieEnitity();
+            temp = new WypozyczenieEnitity();
             DataContext = temp;
             UpdateUI();
             ProduktySzukaj.ProduktyGrid.IsReadOnly = true;
@@ -73,9 +47,7 @@ namespace WypozyczalniaElektronarzedzi
                 if (!temp.produkty.Contains(t))
                 {
                     temp.produkty.Add(t);
-                    temp.UpdateCeny();
-                    ZaDzien.Content = "Za dzień: " +  temp.zaDzien;
-                    Kaucja.Content = "Kaucja: " + temp.kaucja;
+                    UpdateCeny();
                 }
             };
 
@@ -83,15 +55,47 @@ namespace WypozyczalniaElektronarzedzi
             KlienciSzukaj.KlienciGrid.MouseDoubleClick += (sender, args) =>
             {
                 Klienci k = (sender as DataGrid).SelectedItem as Klienci;
-                temp.klien.Clear();
-                temp.klien.Add(k);
+                temp.klient = k;
+                KlientInfoUC.DataContext = temp.klient;
             };
+
+            DatePickerW.SelectedDateChanged += (sender, args) =>
+            {
+                temp.dataDoZwrotu = (DateTime) DatePickerW.SelectedDate;
+            };
+            PodsumowanieProdukty.SelectedCellsChanged += (sender, args) => 
+            {
+                UpdateCeny();
+            }
+            ;
+            PodsumowanieProdukty.MouseDoubleClick += (sender, args) =>
+                {
+                    temp.produkty.Remove((sender as DataGrid).SelectedItem as PelnyProdukt);
+                    UpdateCeny();
+                };
+
+        }
+
+        private void UpdateCeny()
+        {
+
+            temp.UpdateCeny();
+            ZaDzien.Content = "Za dzień: " + temp.zaDzien;
+            Kaucja.Content = "Kaucja: " + temp.kaucja;
         }
 
         public void UpdateUI()
         {
             produktyPodsum = new ObservableCollection<PelnyProdukt>();
-           
+        }
+
+        private void DodajWypozyczeniClick(object sender, RoutedEventArgs e)
+        {
+
+            temp.IDPrac = MainWindow.AppWindow.pracownik.PESEL;
+            WypozyczeniaService service = new WypozyczeniaService();
+            service.AddEntity(temp);
+            WypozyczeniaSzukaj.UC.UpdateUI();
         }
     }
 }
