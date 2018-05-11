@@ -40,7 +40,7 @@
             <Label Content="Koszt" FontWeight="Bold" />
             <Label Content="{Binding Path=zaDzien}" x:Name="ZaDzien" HorizontalAlignment="Right" Margin="10,10,10,10" />
             <Label Content="{Binding Path=kaucja}" x:Name="Kaucja" HorizontalAlignment="Right" Margin="10,10,10,10" />
-            <Button Content="Button" d:LayoutOverrides="Height" Width="100" HorizontalAlignment="Right"
+            <Button Content="Dodaj wypożyczenie" d:LayoutOverrides="Height" Width="100" HorizontalAlignment="Right"
                     Margin="10,10,10,10" Click="DodajWypozyczeniClick" />
             
 

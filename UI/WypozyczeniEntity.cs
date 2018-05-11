@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using ModelBazy;
+using UI.Annotations;
 
 namespace UI
 {
-    public class WypozyczenieEnitity
+    public class WypozyczenieEnitity : INotifyPropertyChanged
     {
         public Wypozyczenie _wypozyczenie { get; set; }
         public ObservableCollection<PelnyProdukt> produkty { get; set; }
@@ -30,5 +33,9 @@ namespace UI
                 kaucja += p.Kaucja;
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+       
     }
 }
