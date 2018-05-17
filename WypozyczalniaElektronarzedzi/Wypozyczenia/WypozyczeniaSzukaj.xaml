@@ -19,11 +19,11 @@
             Margin="10,40,10,10"
             VerticalAlignment="Stretch"
             HorizontalAlignment="Stretch">
-            <StackPanel>
+            <ScrollViewer>
                 <DataGrid x:Name="WypozyczeniaDG" ItemsSource="{Binding Path=.}" Background="#fff"
                           VerticalAlignment="Stretch" Margin="0,0,0,0"
                           IsReadOnly="True"/>
-            </StackPanel>
+            </ScrollViewer>
         </materialDesign:Card>
 
 

@@ -74,11 +74,15 @@ namespace UI
             context.SaveChanges();
         }
 
-        public void Zwrocenie(int id)
+        public void Zwrocenie(int id, string pracownikPesel)
         {
-            var temp = context.Wypozyczenie.Find(id);
+            var temp = DateTime.Now;
+            
+            context.Wypozyczenie.Single(x => x.IDWypozyczenia == id).DataZwrotu = temp;
+            context.Wypozyczenie.Single(x => x.IDWypozyczenia == id).IDPracOdbierajacego = pracownikPesel;
             context.SaveChanges();
-            listaWypozyczen = new ObservableCollection<WypozyczenieView>(context.WypozyczenieViews.ToList());
+           
+
         }
 
         public void Refresh()
@@ -91,6 +95,12 @@ namespace UI
         public void Dispose()
         {
             context?.Dispose();
+        }
+
+        public List<Produkty> GetSzczegolowe(int tempId)
+        {
+            return context.WypozyczenieSz.Where(x => x.IDWypozyczenia == tempId).Select(x => x.ProduktySz)
+                .Select(x => x.Produkty).ToList();
         }
     }
 }

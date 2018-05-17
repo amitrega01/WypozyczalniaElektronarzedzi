@@ -74,6 +74,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dialog\Zwracanie.xaml.cs">
+      <DependentUpon>Zwracanie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Klienci\KlientInfo.xaml.cs">
       <DependentUpon>KlientInfo.xaml</DependentUpon>
     </Compile>
@@ -86,6 +89,10 @@
     <Compile Include="Wypozyczenia\WypozyczenieDodaj.xaml.cs">
       <DependentUpon>WypozyczenieDodaj.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dialog\Zwracanie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Klienci\DodawanieKlienta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

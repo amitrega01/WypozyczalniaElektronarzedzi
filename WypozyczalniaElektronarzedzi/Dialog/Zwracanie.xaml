@@ -1,0 +1,29 @@
+﻿<Window x:Class="WypozyczalniaElektronarzedzi.Dialog.Zwracanie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WypozyczalniaElektronarzedzi.Dialog"
+        mc:Ignorable="d"
+        Title="Zwracanie" Height="450" Width="300">
+    <Grid Margin="0,0,3.6,0">
+        <Label Content="Klient" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" />
+        <Label Content="{Binding Klient}" Margin="55,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Height="26" />
+        <Label Content="Produkty" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"  FontWeight="Bold" />
+        <ItemsControl ItemsSource="{Binding produkty}" Margin="20,72,11,10">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                        <Label Content="{Binding Marka}" HorizontalAlignment="Left" Margin="10,10,0,0"
+                               VerticalAlignment="Top" />
+                        <Label Content="{Binding Model}" HorizontalAlignment="Left" Margin="10,10,0,0"
+                               VerticalAlignment="Top" /> 
+                        <Label Content="{Binding CenaZaDobe}" HorizontalAlignment="Right" Margin="10,10,0,0"
+                               VerticalAlignment="Top" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+    </Grid>
+</Window>

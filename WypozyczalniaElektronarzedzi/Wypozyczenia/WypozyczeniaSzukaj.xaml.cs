@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using AutoMapper;
 using ModelBazy;
 using UI;
+using WypozyczalniaElektronarzedzi.Dialog;
 
 namespace WypozyczalniaElektronarzedzi
 {
@@ -36,8 +37,16 @@ namespace WypozyczalniaElektronarzedzi
 
             WypozyczeniaDG.MouseDoubleClick += (sender, args) =>
             {
-                wypozyczenia.Zwrocenie(
-                    ((sender as DataGrid).SelectedItem as WypozyczenieView).ID);
+                var temp = (sender as DataGrid).SelectedItem as WypozyczenieView;
+               /* wypozyczenia.Zwrocenie(
+                    ((sender as DataGrid).SelectedItem as WypozyczenieView).ID, MainWindow.AppWindow.pracownik.PESEL);
+                UpdateUI();*/
+                Zwracanie zw   = new Zwracanie();
+                zw.Koszt = temp.Cena.ToString();
+                zw.Klient = temp.Klient;
+                zw.produkty = wypozyczenia.GetSzczegolowe(temp.ID);
+                zw.ShowDialog();
+
             };
 
 
